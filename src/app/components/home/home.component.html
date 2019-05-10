@@ -1,0 +1,90 @@
+<div class="container-fluid">
+  <div class="row">
+    <div *ngFor="let post of posts" class="col-12" style="border-bottom:1px solid #eee">
+
+
+      <div style="margin-top:40px">
+
+        <div>
+          <div style="display:flex;align-items:center;justify-content:space-between">
+
+            <div style="display:flex;align-items:center">
+              <img [src]="post.usuario.img.url"
+                style="height:40px;width:40px;border-radius:50%;object-fit:cover;border:2px solid #eee">
+
+              <div style="margin-left:5px">
+                <div style="color:#444;font-size:14px;font-weight:600">
+                  {{post.usuario.nombre}}
+                </div>
+                <div style="font-size:13px;color:#999">
+                  {{post.usuario.tipo}}
+                </div>
+              </div>
+            </div>
+
+            <!-- <div style="margin-left:5px;margin-right:5px">
+              <div style="text-align:center;background:#FFF6E6;color:orange;padding:5px;border-radius:6px;font-size:14px">
+                {{post.participantes}}
+              </div>
+            </div> -->
+
+
+            <div>
+              <div
+                style="text-align:center;background:#FFF6E6;color:orange;padding:5px;border-radius:6px;font-size:14px">
+                {{post.participantes}}
+              </div>
+            </div>
+
+            <div
+              style="font-size:13px;background:whitesmoke;border-radius:6px;color:#888;padding:4px;padding-left:10px;padding-right:10px">
+              {{post.precio}}
+            </div>
+
+          </div>
+
+          <div style="margin-top:10px;margin-left:15px;display:inline-block;font-size:16px;color:#444">
+            {{post.mensaje}}
+          </div>
+        </div>
+        <!-- <hr> -->
+
+
+        <img [src]="post.img"
+                style="width:80%;object-fit:cover;border:2px solid #eee">
+        
+
+        <div
+          style="margin-top:10px;width:100%;padding-left:15px;padding-right:15px;display:flex;align-items:center;justify-content:space-between">
+          <div>
+            <i class="far fa-clock" style="color:#bbb;font-size:18px"></i>
+            <div style="margin-left:5px;display:inline-block;color:#999;font-size:14px">
+              {{post.hora}}
+            </div>
+          </div>
+          <div>
+            <i class="far fa-calendar" style="color:#bbb;font-size:18px"></i>
+            <div style="margin-left:5px;display:inline-block;color:#999;font-size:14px">
+              {{post.fecha}}
+            </div>
+          </div>
+          <!-- <div>
+            <i class="fas fa-user-plus" style="color:#bbb;font-size:18px"></i>
+            <div style="margin-left:5px;display:inline-block;color:#999;font-size:14px">
+              6
+            </div>
+          </div> -->
+          <div>
+            <i class="fas fa-map-marker-alt" style="color:#bbb;font-size:18px"></i>
+            <div style="margin-left:5px;display:inline-block;color:#999;font-size:14px">
+              {{post.distancia}} km
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:30px"></div>
+
+    </div>
+  </div>
+</div>
