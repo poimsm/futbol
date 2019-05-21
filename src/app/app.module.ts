@@ -9,6 +9,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/login/login.component';
 import { ContentComponent } from './components/content/content.component';
+import { RecintosComponent } from './components/recintos/recintos.component';
+import { EvaluarComponent } from './components/evaluar/evaluar.component';
+import { JuegoPublicoComponent } from './components/juego-publico/juego-publico.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { ContentComponent } from './components/content/content.component';
     FooterComponent,
     UserComponent,
     LoginComponent,
-    ContentComponent
+    ContentComponent,
+    RecintosComponent,
+    EvaluarComponent,
+    JuegoPublicoComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,

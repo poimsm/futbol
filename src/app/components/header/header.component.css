@@ -7,11 +7,12 @@ a {
 .activarBloque {
     background: #4ea8ff;
     color: white;
+    font-weight:600;
 }
 
 .desactivarBloque {
     background: white;
-    color: #444;
+    color: #777;
 }
 
 .activarIcono {

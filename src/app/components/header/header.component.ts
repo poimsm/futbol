@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ControlService } from 'src/app/services/control.service';
+import { Router } from '@angular/router';
+import { ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,14 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  @ViewChild('contenedor') contenedor: ElementRef;
+
+
   activoA = true;
   activoB = false;
   activoC = false;
 
   addApp = false;
+  navbar = false;
 
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    public _control: ControlService
+  ) {
+
+    let self = this;
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function () {
+      var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        document.getElementById("navbar").style.top = "0";
+      } else {
+        document.getElementById("navbar").style.top = "-60px";
+      }
+      prevScrollpos = currentScrollPos;
+    }
+   }
 
   activarBloque(letra) {
     if (letra == 'A') {
@@ -34,9 +57,11 @@ export class HeaderComponent implements OnInit {
       this.activoB = false;
       this.activoC = true;
     }
-    console.log(this.activoA);
-    
+  }
 
+  openHome() {
+    this.router.navigateByUrl('/home');
+    this._control.isHome = true;
   }
 
   ngOnInit() {

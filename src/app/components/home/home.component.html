@@ -1,6 +1,194 @@
+<!-- <div style="height:120px"></div>
+
+<div *ngIf="false" style="width:100%;padding-left:14px;padding-right:15px;display:flex;">
+    <div style="width:50%;border-right:1px solid #eee">
+        <div style="color:#777">
+            Oscar Garcia
+          </div>
+        <div style="font-size:14px;color:#777">
+          poimsm@gmail.com
+        </div>
+    </div>
+    <div style="padding-left:20px">
+
+      <div style="color:#777">
+          <i class="fas fa-wallet" style="margin-right:5px;font-size:22px;color:#bbb"></i>
+        Balance
+      </div>
+        <div style="color:dodgerblue">
+        $10.000
+      </div>
+
+    </div>
+</div>
+
+<div style="height:20px"></div>
+
+
+<div style="height:10px"></div>
+
+
+<div *ngIf="false" style="padding:15px;display:flex;align-items:center;">
+
+    
+    <div style="position:relative">
+        <img src="assets/u02.jpg"
+        style="border:0px solid #fff;margin-left:10px;width:70px;height:70px;border-radius:15px;object-fit:cover">
+        <div style="position:absolute;bottom:-2px;right:0px">
+       </div>
+    </div>
+
+    <div style="margin-left:30px">
+      <div style="display:flex">
+        <div style="background:whitesmoke;height:40px;width:60px;border-radius:10px;">
+          <div style="width:100%;text-align:center;font-size:15px">
+             1
+            <div style="font-size:11px">
+                Rapidez
+            </div>
+          </div>
+        </div>
+        <div style="margin-left:10px;background:whitesmoke;height:40px;width:60px;border-radius:10px;">
+            <div style="width:100%;text-align:center;font-size:15px">
+               4
+              <div style="font-size:11px">
+                  Pases
+              </div>
+            </div>
+          </div>
+          <div style="margin-left:10px;background:whitesmoke;height:40px;width:60px;border-radius:10px;">
+              <div style="width:100%;text-align:center;font-size:15px">
+                 2
+                <div style="font-size:11px">
+                    Creación
+                </div>
+              </div>
+            </div>
+      </div>
+
+      <div style="margin-top:10px;font-weight:500;padding:0px;border-radius:8px;width:50px;text-align:center;font-size:15px;background:gold;color:white">
+          Lv3
+      </div>
+    </div>
+
+</div>
+
+
+<div style="width:100%;height:10px;background:#eee"></div>
+
+<div style="height:10px"></div>
+
+<div style="width:100%;display:Flex;justify-content:center;align-items:center">
+  <div style="padding:10px;border:0px solid #eee;border-radius:20px;display:flex;align-items:center;">
+      <i class="fas fa-wallet" style="font-size:22px;color:#bbb"></i>
+      <div style="color:#555;margin-left:10px">
+        Agregar dinero a la billetera
+      </div>
+  </div>
+</div>
+
+<div style="height:10px"></div>
+
+<div style="width:100%;height:10px;background:#eee"></div>
+
+
+<div style="height:30px"></div> -->
+
+<div style="height:90px"></div>
+
+
 <div class="container-fluid">
   <div class="row">
-    <div *ngFor="let post of posts" class="col-12" style="border-bottom:1px solid #eee">
+
+    <h4 style="width:100%;text-align:center">Juegos públicos</h4>
+
+    <div style="height:15px;width:100%"></div>
+
+    <div *ngFor="let post of posts2" style="width:100%">
+      <div
+        style="padding:15px;height:100px;border-bottom:0px solid rgba(0,0,0,.1);border-top:0px solid #eee;width:100%;display:flex;align-items:center;justify-content:space-between">
+        <div>
+          <div>
+            <div
+              style="width:140px;text-align:center;background:whitesmoke;color:#777;padding:5px;border-radius:6px;font-size:14px">
+              <i class="fas fa-futbol" style="font-size:16px;color:#bbb;margin-right:5px"></i>
+              {{post.participantes}} jugadores
+            </div>
+            <div style="margin-left:10px">
+              <i class="far fa-clock" style="color:#bbb;font-size:16px"></i>
+              <div style="margin-left:10px;display:inline-block;color:#999;font-size:14px">
+                {{post.hora}}
+              </div>
+            </div>
+            <div style="margin-left:10px">
+              <i class="fas fa-map-marker-alt" style="color:#bbb;font-size:16px"></i>
+              <div style="margin-left:15px;display:inline-block;color:#999;font-size:14px">
+                {{post.direccion}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            style="font-weight:500;text-align:center;font-size:14px;width:60px;padding:3px;color:#057AFF;border-radius:5px;border:1px solid dodgerblue">
+            {{post.precio}}
+          </div>
+          <div style="color:#999;font-size:13px;margin-left:-8px">
+            Unirse ahora
+          </div>
+        </div>
+      </div>
+      <div style="display:Flex;margin-left:10px">
+        <div style="position:relative">
+            <img src="assets/u01.jpg"
+            style="border:0px solid #fff;margin-left:10px;width:40px;height:40px;border-radius:50%;object-fit:cover">
+            <div style="position:absolute;bottom:-2px;right:0px">
+              <div style="font-weight:500;padding:0px;border-radius:8px;width:30px;text-align:center;font-size:11px;background:gold;color:white">
+                  Lv3
+              </div>
+            </div>
+        </div>
+
+        <div style="position:relative">
+            <img src="assets/u02.jpg"
+            style="border:0px solid #fff;margin-left:10px;width:40px;height:40px;border-radius:50%;object-fit:cover">
+            <div style="position:absolute;bottom:-2px;right:0px">
+              <div style="font-weight:500;padding:0px;border-radius:8px;width:30px;text-align:center;font-size:11px;background:darkorange;color:white">
+                  Lv4
+              </div>
+            </div>
+        </div>
+
+        <div style="position:relative">
+            <img src="assets/u01.jpg"
+            style="border:0px solid #fff;margin-left:10px;width:40px;height:40px;border-radius:50%;object-fit:cover">
+            <div style="position:absolute;bottom:-2px;right:0px">
+              <div style="font-weight:500;padding:0px;border-radius:8px;width:30px;text-align:center;font-size:11px;background:orangered;color:white">
+                  Lv7
+              </div>
+            </div>
+        </div>
+       
+          <!-- <img src="assets/u02.jpg"
+          style="border:2px solid #fff;margin-left:5px;width:30px;height:30px;border-radius:50%;object-fit:cover">
+        <img src="assets/u01.jpg"
+          style="border:2px solid #fff;margin-left:5px;width:30px;height:30px;border-radius:50%;object-fit:cover">
+         -->
+          <div
+          style="margin-left:5px;width:40px;height:40px;background:whitesmoke;border-radius:50%;display:flex;align-items:center;justify-content:center">
+          <i class="fas fa-ellipsis-h" style="color:#bbb;font-size:15px"></i>
+        </div>
+      </div>
+      <hr style="width:100%">
+    </div>
+
+
+
+
+
+
+    <!-- *ngFor="let post of posts" -->
+    <div *ngIf="false" (click)="openContent()" class="col-12" style="border-bottom:1px solid #eee">
 
 
       <div style="margin-top:40px">
@@ -47,12 +235,9 @@
             {{post.mensaje}}
           </div>
         </div>
-        <!-- <hr> -->
 
+        <img [src]="post.img" style="width:80%;object-fit:cover;border:2px solid #eee">
 
-        <img [src]="post.img"
-                style="width:80%;object-fit:cover;border:2px solid #eee">
-        
 
         <div
           style="margin-top:10px;width:100%;padding-left:15px;padding-right:15px;display:flex;align-items:center;justify-content:space-between">
@@ -87,4 +272,9 @@
 
     </div>
   </div>
+</div>
+
+
+<div *ngIf="showFlecha" style="position:fixed;z-index:999;right:20px;bottom:40px">
+  <i (click)="subir()" class="fas fa-arrow-circle-up" style="color:#444;font-size:36px"></i>
 </div>

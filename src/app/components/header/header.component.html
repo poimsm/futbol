@@ -1,9 +1,12 @@
-<div class="container-fluid">
+<div id="navbar" #contenedor class="container-fluid" style="transition: top 0.3s;z-index:100;position:fixed;top:0xp;left:0px;">
   <div class="row">
     <div class="col-12" style="background:dodgerblue">
       <div style="height:60px;width:100%;display:flex;align-items:center;justify-content:space-between;padding:15px">
         <div style="display:flex;align-items:center">
-          <i class="fas fa-bars" style="color:white;font-size:18px;margin-right:20px"></i>
+
+          <i *ngIf="_control.isHome" (click)="_control.showSidenav = true" class="fas fa-bars" style="color:white;font-size:18px;margin-right:20px"></i>
+          <i *ngIf="!_control.isHome" (click)="openHome()" class="fas fa-arrow-left" style="color:white;font-size:18px;margin-right:20px"></i>
+
           <img src="assets/rattata.svg" style="width:30px">
           <div style="color:white;font-size:26px;font-weight:500;">
             WeUpto
@@ -19,7 +22,7 @@
       </div>
     </div>
 
-    <div style="box-shadow: 0 5px 5px -5px #444;border-bottom:0px solid #eee;width:100%;display:flex;align-items:center;justify-content:space-between;padding:0px">
+    <div *ngIf="_control.isHome" style="box-shadow: 0 5px 5px -5px #999;border-bottom:0px solid #eee;width:100%;display:flex;align-items:center;justify-content:space-between;padding:0px">
       <div (click)="activarBloque('A')" [ngClass]="{'activarBloque': activoA,'desactivarBloque': !activoA }"
         style="font-size:14px;width:33%;display:flex;justify-content:center;align-items:center;padding:3px">
         <i class="far fa-clock" [ngClass]="{'activarIcono': activoA,'desactivarIcono': !activoA }" style="font-size:18px;margin-right:5px"></i>
@@ -50,12 +53,16 @@
     </div>
 
     <div style="margin-top:5px;font-size:13px;font-weight:400;color:white">
-        Agrega WeUpto a la pantalla principal y otras cosas mas que se puede
-      </div>
+      Búsca en el menu de tu navegador la opción para agregar WeUpto como un acceso rápido
+    </div>
 
     <div (click)="addApp = !addApp" style="font-size:14px;margin-top:20px;padding:4px;background:white;border-radius:2px;color:#555;padding-left:10px;padding-right:10px;display:inline-block">
-      HECHO
+      HECHO!
     </div>
   </div>
 
 </div>
+
+
+
+<app-sidenav *ngIf="_control.showSidenav"></app-sidenav>
