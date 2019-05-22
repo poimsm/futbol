@@ -12,19 +12,28 @@ export class HomeComponent implements OnInit {
 
   posts2 = [
     {
+      isPronto: true,
+      dia: '23',
+      mes: 'Mayo',
       participantes: '4/10',
-      hora: '16:40 - 17:40 | 20 de Mayo',
+      hora: '16:40 - 17:40',
       direccion: 'Simon Bolivar 802',
       precio: '$2.600'
     },
     {
+      isPronto: false,
+      dia: '24',
+      mes: 'Mayo',
       participantes: '9/10',
-      hora: '20:00 - 22 de Mayo',
+      hora: '20:00 - 17:40',
       direccion: 'Simon Bolivar 802',
       precio: 'Gratis'
-    },{
+    },{  
+      isPronto: false,
+      dia: '28',
+      mes: 'Mayo',
       participantes: '6/10',
-      hora: '19:50 - 22 de Mayo',
+      hora: '19:50 - 17:40',
       direccion: 'Simon Bolivar 802',
       precio: '$2.600'
     }

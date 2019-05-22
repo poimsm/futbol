@@ -5,8 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class ControlService {
 
-  isHome = false;
+  isHome = true;
   showSidenav = false;
+  isUser = false;
 
   constructor() { }
   

@@ -100,20 +100,35 @@
 <div class="container-fluid">
   <div class="row">
 
-    <h4 style="width:100%;text-align:center">Juegos públicos</h4>
+    <h4 style="width:100%;text-align:center">Nuevos eventos</h4>
 
     <div style="height:15px;width:100%"></div>
 
     <div *ngFor="let post of posts2" style="width:100%">
       <div
         style="padding:15px;height:100px;border-bottom:0px solid rgba(0,0,0,.1);border-top:0px solid #eee;width:100%;display:flex;align-items:center;justify-content:space-between">
-        <div>
-          <div>
-            <div
-              style="width:140px;text-align:center;background:whitesmoke;color:#777;padding:5px;border-radius:6px;font-size:14px">
-              <i class="fas fa-futbol" style="font-size:16px;color:#bbb;margin-right:5px"></i>
-              {{post.participantes}} jugadores
+        <div style="display:flex;align-items:center">
+          <div style="text-align:center;margin-right:10px">
+            <div style="font-size:20px;color:#999;font-weight:700">
+              {{post.dia}}
             </div>
+            <div style="font-size:16px;color:#777">
+              {{post.mes}}
+            </div>
+          </div>
+          <div>
+            <div style="display:Flex;align-items:center">
+                <div
+                style="width:140px;text-align:center;background:whitesmoke;color:#777;padding:5px;border-radius:6px;font-size:14px">
+                <i class="fas fa-futbol" style="font-size:16px;color:#bbb;margin-right:5px"></i>
+                {{post.participantes}} jugadores              
+              </div>
+              <div style="background:limegreen;color:white;margin-left:10px;font-size:14px;border-radius:2px">
+                Pronto
+              </div>
+            </div>
+            
+
             <div style="margin-left:10px">
               <i class="far fa-clock" style="color:#bbb;font-size:16px"></i>
               <div style="margin-left:10px;display:inline-block;color:#999;font-size:14px">
@@ -121,7 +136,7 @@
               </div>
             </div>
             <div style="margin-left:10px">
-              <i class="fas fa-map-marker-alt" style="color:#bbb;font-size:16px"></i>
+              <i class="fas fa-map-marker-alt" style="color:lightsalmon;font-size:16px"></i>
               <div style="margin-left:15px;display:inline-block;color:#999;font-size:14px">
                 {{post.direccion}}
               </div>
@@ -138,7 +153,7 @@
           </div>
         </div>
       </div>
-      <div style="display:Flex;margin-left:10px">
+      <div style="padding-right:20px;display:Flex;justify-content:flex-end;margin-left:10px">
         <div style="position:relative">
             <img src="assets/u01.jpg"
             style="border:0px solid #fff;margin-left:10px;width:40px;height:40px;border-radius:50%;object-fit:cover">
@@ -146,6 +161,10 @@
               <div style="font-weight:500;padding:0px;border-radius:8px;width:30px;text-align:center;font-size:11px;background:gold;color:white">
                   Lv3
               </div>
+              <!-- <div style="font-weight:500;padding:0px;border-radius:8px;width:30px;text-align:center;font-size:11px;background:white;color:#777">
+                  <i class="fas fa-star" style="font-size:10px;color:#bbb;margin-right:0px"></i>
+                  3
+              </div> -->
             </div>
         </div>
 
@@ -156,6 +175,10 @@
               <div style="font-weight:500;padding:0px;border-radius:8px;width:30px;text-align:center;font-size:11px;background:darkorange;color:white">
                   Lv4
               </div>
+              <!-- <div style="font-weight:500;padding:0px;border-radius:8px;width:30px;text-align:center;font-size:11px;background:white;color:#777">
+                  <i class="fas fa-star" style="font-size:10px;color:#bbb;margin-right:0px"></i>
+                  4
+              </div> -->
             </div>
         </div>
 
@@ -166,6 +189,10 @@
               <div style="font-weight:500;padding:0px;border-radius:8px;width:30px;text-align:center;font-size:11px;background:orangered;color:white">
                   Lv7
               </div>
+              <!-- <div style="font-weight:500;padding:0px;border-radius:8px;width:30px;text-align:center;font-size:11px;background:white;color:#777">
+                  <i class="fas fa-star" style="font-size:10px;color:#bbb;margin-right:0px"></i>
+                  2
+              </div> -->
             </div>
         </div>
        
@@ -175,7 +202,7 @@
           style="border:2px solid #fff;margin-left:5px;width:30px;height:30px;border-radius:50%;object-fit:cover">
          -->
           <div
-          style="margin-left:5px;width:40px;height:40px;background:whitesmoke;border-radius:50%;display:flex;align-items:center;justify-content:center">
+          style="margin-left:10px;width:40px;height:40px;background:whitesmoke;border-radius:50%;display:flex;align-items:center;justify-content:center">
           <i class="fas fa-ellipsis-h" style="color:#bbb;font-size:15px"></i>
         </div>
       </div>

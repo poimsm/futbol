@@ -1,5 +1,7 @@
 <div id="navbar" #contenedor class="container-fluid" style="transition: top 0.3s;z-index:100;position:fixed;top:0xp;left:0px;">
-  <div class="row">
+ 
+ 
+   <div *ngIf="_control.isHome" class="row">
     <div class="col-12" style="background:dodgerblue">
       <div style="height:60px;width:100%;display:flex;align-items:center;justify-content:space-between;padding:15px">
         <div style="display:flex;align-items:center">
@@ -22,7 +24,7 @@
       </div>
     </div>
 
-    <div *ngIf="_control.isHome" style="box-shadow: 0 5px 5px -5px #999;border-bottom:0px solid #eee;width:100%;display:flex;align-items:center;justify-content:space-between;padding:0px">
+    <div *ngIf="false" style="box-shadow: 0 5px 5px -5px #999;border-bottom:0px solid #eee;width:100%;display:flex;align-items:center;justify-content:space-between;padding:0px">
       <div (click)="activarBloque('A')" [ngClass]="{'activarBloque': activoA,'desactivarBloque': !activoA }"
         style="font-size:14px;width:33%;display:flex;justify-content:center;align-items:center;padding:3px">
         <i class="far fa-clock" [ngClass]="{'activarIcono': activoA,'desactivarIcono': !activoA }" style="font-size:18px;margin-right:5px"></i>
@@ -39,9 +41,33 @@
         Cerca
       </div>
     </div>
-
-
   </div>
+
+
+
+
+
+  <div *ngIf="_control.isUser" class="row">
+      <div class="col-12" style="background:white;border-bottom: 1px solid #eee">
+        <div style="height:60px;width:100%;display:flex;align-items:center;justify-content:space-between;padding:15px">
+          <div style="display:flex;align-items:center">
+  
+            <i (click)="openHome()" class="fas fa-arrow-left" style="color:dodgerblue;font-size:18px;margin-right:20px"></i>
+  
+            <img src="assets/rattata.svg" style="width:30px">
+            <div style="color:#666;font-size:26px;font-weight:500;">
+              WeUpto
+            </div>
+          </div>
+          <div>
+              <i class="fas fa-cog" style="color:#999;font-size:20px"></i>
+            <!-- <i (click)="addApp = !addApp" class="fas fa-plus-square" style="color:white;font-size:18px;margin-right:20px"></i>
+            <i class="fas fa-user" style="color:white;font-size:18px"></i>
+        -->
+        </div>
+      </div> 
+    </div>
+
 </div>
 
 
