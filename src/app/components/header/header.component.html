@@ -1,13 +1,16 @@
-<div id="navbar" #contenedor class="container-fluid" style="transition: top 0.3s;z-index:100;position:fixed;top:0xp;left:0px;">
- 
- 
-   <div *ngIf="_control.isHome" class="row">
+<div id="navbar" #contenedor class="container-fluid"
+  style="transition: top 0.3s;z-index:100;position:fixed;top:0xp;left:0px;">
+
+
+  <div *ngIf="_control.isHome" class="row">
     <div class="col-12" style="background:dodgerblue">
       <div style="height:60px;width:100%;display:flex;align-items:center;justify-content:space-between;padding:15px">
         <div style="display:flex;align-items:center">
 
-          <i *ngIf="_control.isHome" (click)="_control.showSidenav = true" class="fas fa-bars" style="color:white;font-size:18px;margin-right:20px"></i>
-          <i *ngIf="!_control.isHome" (click)="openHome()" class="fas fa-arrow-left" style="color:white;font-size:18px;margin-right:20px"></i>
+          <i *ngIf="_control.isHome" (click)="_control.showSidenav = true" class="fas fa-bars"
+            style="color:white;font-size:18px;margin-right:20px"></i>
+          <i *ngIf="!_control.isHome" (click)="openHome()" class="fas fa-arrow-left"
+            style="color:white;font-size:18px;margin-right:20px"></i>
 
           <img src="assets/rattata.svg" style="width:30px">
           <div style="color:white;font-size:26px;font-weight:500;">
@@ -15,7 +18,8 @@
           </div>
         </div>
         <div>
-          <i (click)="addApp = !addApp" class="fas fa-plus-square" style="color:white;font-size:18px;margin-right:20px"></i>
+          <i (click)="addApp = !addApp" class="fas fa-plus-square"
+            style="color:white;font-size:18px;margin-right:20px"></i>
           <i class="fas fa-user" style="color:white;font-size:18px"></i>
           <!-- <div style="padding:3px;background:white;border-radius:6px;color:#444;font-size:14px">
             Unirse
@@ -24,20 +28,24 @@
       </div>
     </div>
 
-    <div *ngIf="false" style="box-shadow: 0 5px 5px -5px #999;border-bottom:0px solid #eee;width:100%;display:flex;align-items:center;justify-content:space-between;padding:0px">
+    <div *ngIf="false"
+      style="box-shadow: 0 5px 5px -5px #999;border-bottom:0px solid #eee;width:100%;display:flex;align-items:center;justify-content:space-between;padding:0px">
       <div (click)="activarBloque('A')" [ngClass]="{'activarBloque': activoA,'desactivarBloque': !activoA }"
         style="font-size:14px;width:33%;display:flex;justify-content:center;align-items:center;padding:3px">
-        <i class="far fa-clock" [ngClass]="{'activarIcono': activoA,'desactivarIcono': !activoA }" style="font-size:18px;margin-right:5px"></i>
+        <i class="far fa-clock" [ngClass]="{'activarIcono': activoA,'desactivarIcono': !activoA }"
+          style="font-size:18px;margin-right:5px"></i>
         Recientes
       </div>
       <div (click)="activarBloque('B')" [ngClass]="{'activarBloque': activoB,'desactivarBloque': !activoB }"
         style="font-size:14px;border-right:1px solid #eee;width:33%;display:flex;justify-content:center;align-items:center;padding:3px">
-        <i class="fas fa-dollar-sign" [ngClass]="{'activarIcono': activoB,'desactivarIcono': !activoB }" style="font-size:18px;margin-right:5px"></i>
+        <i class="fas fa-dollar-sign" [ngClass]="{'activarIcono': activoB,'desactivarIcono': !activoB }"
+          style="font-size:18px;margin-right:5px"></i>
         Económico
       </div>
       <div (click)="activarBloque('C')" [ngClass]="{'activarBloque': activoC,'desactivarBloque': !activoC }"
         style="font-size:14px;width:34%;display:flex;justify-content:center;align-items:center;padding:3px">
-        <i class="fas fa-map-marker-alt" [ngClass]="{'activarIcono': activoC,'desactivarIcono': !activoC }" style="font-size:18px;margin-right:5px"></i>
+        <i class="fas fa-map-marker-alt" [ngClass]="{'activarIcono': activoC,'desactivarIcono': !activoC }"
+          style="font-size:18px;margin-right:5px"></i>
         Cerca
       </div>
     </div>
@@ -47,48 +55,59 @@
 
 
 
-  <div *ngIf="_control.isUser" class="row">
-      <div class="col-12" style="background:white;border-bottom: 1px solid #eee">
-        <div style="height:60px;width:100%;display:flex;align-items:center;justify-content:space-between;padding:15px">
-          <div style="display:flex;align-items:center">
-  
-            <i (click)="openHome()" class="fas fa-arrow-left" style="color:dodgerblue;font-size:18px;margin-right:20px"></i>
-  
-            <img src="assets/rattata.svg" style="width:30px">
-            <div style="color:#666;font-size:26px;font-weight:500;">
-              WeUpto
-            </div>
+  <div class="row">
+    <div class="col-12" style="background:white;border-bottom: 1px solid #eee">
+      <div style="height:60px;width:100%;display:flex;align-items:center;justify-content:space-between;padding:15px">
+        <div style="display:flex;align-items:center">
+
+          <i *ngIf="_control.isUser" (click)="_control.showSidenav = true" class="fas fa-bars"
+            style="color:dodgerblue;font-size:18px;margin-right:20px"></i>
+          <i *ngIf="!_control.isUser" (click)="back()" class="fas fa-arrow-left"
+            style="color:dodgerblue;font-size:18px;margin-right:20px"></i>
+
+          <img src="assets/rattata.svg" style="width:30px">
+          <div style="color:#666;font-size:26px;font-weight:500;">
+            WeUpto
           </div>
-          <div>
-              <i class="fas fa-cog" style="color:#999;font-size:20px"></i>
-            <!-- <i (click)="addApp = !addApp" class="fas fa-plus-square" style="color:white;font-size:18px;margin-right:20px"></i>
+        </div>
+        <div>
+          <div style="font-size:16px;color:#666">
+            Registrarse
+          </div>
+          <!-- <i class="fas fa-cog" style="color:#999;font-size:20px"></i> -->
+          <!-- <i (click)="addApp = !addApp" class="fas fa-plus-square" style="color:white;font-size:18px;margin-right:20px"></i>
             <i class="fas fa-user" style="color:white;font-size:18px"></i>
         -->
         </div>
-      </div> 
+      </div>
     </div>
 
-</div>
-
-
-<div *ngIf="addApp" style="padding:20px;z-index:999;position:fixed;top:0px;left:0px;height:100%;width:100%;background:rgb(31, 143, 255, 0.9)">
-
-  <div style="margin-top:30%;">
-    <div style="font-size:18px;font-weight:600;color:white">
-      Agrega WeUpto a la pantalla principal
-    </div>
-
-    <div style="margin-top:5px;font-size:13px;font-weight:400;color:white">
-      Búsca en el menu de tu navegador la opción para agregar WeUpto como un acceso rápido
-    </div>
-
-    <div (click)="addApp = !addApp" style="font-size:14px;margin-top:20px;padding:4px;background:white;border-radius:2px;color:#555;padding-left:10px;padding-right:10px;display:inline-block">
-      HECHO!
-    </div>
   </div>
 
-</div>
+
+  <app-evaluar></app-evaluar>
+
+
+  <div *ngIf="addApp"
+    style="padding:20px;z-index:999;position:fixed;top:0px;left:0px;height:100%;width:100%;background:rgb(31, 143, 255, 0.9)">
+
+    <div style="margin-top:30%;">
+      <div style="font-size:18px;font-weight:600;color:white">
+        Agrega WeUpto a la pantalla principal
+      </div>
+
+      <div style="margin-top:5px;font-size:13px;font-weight:400;color:white">
+        Búsca en el menu de tu navegador la opción para agregar WeUpto como un acceso rápido
+      </div>
+
+      <div (click)="addApp = !addApp"
+        style="font-size:14px;margin-top:20px;padding:4px;background:white;border-radius:2px;color:#555;padding-left:10px;padding-right:10px;display:inline-block">
+        HECHO!
+      </div>
+    </div>
+
+  </div>
 
 
 
-<app-sidenav *ngIf="_control.showSidenav"></app-sidenav>
+  <app-sidenav *ngIf="_control.showSidenav"></app-sidenav>

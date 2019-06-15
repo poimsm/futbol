@@ -39,6 +39,11 @@ export class HeaderComponent implements OnInit {
     }
    }
 
+   back() {
+     this.router.navigateByUrl('/user');
+     this._control.isUser = true;
+   }
+
   activarBloque(letra) {
     if (letra == 'A') {
       this.activoA = true;

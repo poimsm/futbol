@@ -1,6 +1,6 @@
 <div style="height:80px"></div>
 
-<h4 style="margin-left:15px">Mi cuenta</h4>
+<!-- <h4 style="margin-left:15px">Mi cuenta</h4> -->
 
 <div style="padding:15px">
 
@@ -100,30 +100,12 @@
     Balance: <span style="color:dodgerblue">$0</span>
   </div>
 
-<!-- <div style="width:100%;display:Flex;justify-content:center;align-items:center">
-  <div style="padding:10px;border:0px solid #eee;border-radius:20px;display:flex;align-items:center;">
-    <i class="fas fa-wallet" style="font-size:22px;color:#bbb"></i>
-    <div style="color:#555;margin-left:10px">
-      Agregar dinero a la billetera
-    </div>
-  </div>
-</div> -->
-<!-- <div style="padding-left:30px">
-    <div style="color:#777">
-      <i class="fas fa-wallet" style="margin-right:5px;font-size:22px;color:#bbb"></i>
-      Balance
-    </div>
-    <div style="color:dodgerblue">
-      $10.000
-    </div>
-  </div> -->
-
 <div style="height:10px"></div>
 
 <div style="width:100%;">
-  <div (click)="change('A')" [ngClass]="{'active': isA}" style="padding-bottom:3px;font-size:16px;font-weight:450;color:#444;width:50%;display:inline-block;text-align:center">
+  <div (click)="change('A')" [ngClass]="{'active': isA}" style="padding-bottom:3px;font-size:16px;font-weight:450;color:#444;width:33%;display:inline-block;text-align:center">
     <div style="display:inline-block;position:relative">
-        Mis juegos
+        Inicio
         <div style="position:absolute;top:-2px;right:-15px">
             <div style="border-radius:50%;background:orangered;color:white;font-size:13px;font-weight:500;width:15px;height:15px;display:flex;justify-content:center;align-items:center">
                 1
@@ -132,81 +114,19 @@
        
     </div>
   </div>
-  <!-- <div (click)="change('B')" [ngClass]="{'active': isB}" style="padding-bottom:3px;font-size:16px;font-weight:450;color:#444;width:33%;display:inline-block;text-align:center">
-      Comentarios
-    </div> -->
-    <div (click)="change('C')" [ngClass]="{'active': isC}" style="padding-bottom:3px;font-size:16px;font-weight:450;color:#444;width:50%;display:inline-block;text-align:center">
-        Compras
+  <div (click)="change('B')" [ngClass]="{'active': isB}" style="padding-bottom:3px;font-size:16px;font-weight:450;color:#444;width:33%;display:inline-block;text-align:center">
+      Partidos
+    </div>
+    <div (click)="change('C')" [ngClass]="{'active': isC}" style="padding-bottom:3px;font-size:16px;font-weight:450;color:#444;width:34%;display:inline-block;text-align:center">
+        Mensajes
       </div>
 </div>
 
 <div style="height:20px;border-top:1px solid #eee"></div>
 
-<!-- <h4 style="margin-left:15px">Historial de compras</h4> -->
-
-<div style="padding:15px">
-  <div style="width:100%;display:flex;justify-content:space-between;align-items:center">
-    <div style="color:#555;display:flex;align-items:center">
-      <div
-        style="margin-right:10px;border-radius:50%;height:30px;width:30px;display:flex;justify-content:center;align-items:center;background:#bbb">
-        <i class="fas fa-shopping-cart" style="font-size:13px;color:#fff"></i>
-      </div>
-      <div style="display:inline-block">
-        Cancha Mira Flores
-        <div style="font-size:13px">
-          12 de Mayo - Reserva
-        </div>
-      </div>
-    </div>
-    <div style="color:#555">
-      $2.200
-    </div>
-  </div>
-
-  <div style="margin-top:20px;width:100%;display:flex;justify-content:space-between;align-items:center">
-    <div style="color:#555;display:flex;align-items:center">
-      <div
-        style="margin-right:10px;border-radius:50%;height:30px;width:30px;display:flex;justify-content:center;align-items:center;background:#bbb">
-        <i class="fas fa-plus" style="font-size:13px;color:#fff"></i>
-      </div>
-      <div style="display:inline-block">
-        Billetera
-        <div style="font-size:13px">
-          10 de Mayo - Recarga
-        </div>
-      </div>
-    </div>
-    <div style="color:#555">
-      $5.000
-    </div>
-  </div>
+<app-home *ngIf="isA"></app-home>
+<app-mis-eventos *ngIf="isB"></app-mis-eventos>
+<app-compras *ngIf="isC"></app-compras>
 
 
-  <div style="margin-top:20px;width:100%;display:flex;justify-content:space-between;align-items:center">
-    <div style="color:#555;display:flex;align-items:center">
-      <div
-        style="margin-right:10px;border-radius:50%;height:30px;width:30px;display:flex;justify-content:center;align-items:center;background:#bbb">
-        <i class="fas fa-shopping-cart" style="font-size:13px;color:#fff"></i>
-      </div>
-      <div style="display:inline-block">
-        Cancha Mira Flores
-        <div style="font-size:13px">
-          10 de Mayo - Se unió
-        </div>
-      </div>
-    </div>
-    <div style="color:#555">
-      $2.100
-    </div>
-  </div>
-</div>
-
-<!-- <div>
-  Mis juegos
-</div>
-
-<div>
-  Mis reservas
-</div> -->
-
-<div style="height:300px"></div>
+<div style="height:100px"></div>

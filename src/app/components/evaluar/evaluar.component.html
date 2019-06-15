@@ -1,4 +1,4 @@
-<div *ngIf="false"
+<div *ngIf="_control.showRankingGame"
   style="z-index:999;position:fixed;left:0px;top:0px;background:rgb(73, 73, 73, 0.5);height:100%;width:100%;display:flex;align-items:center;justify-content:center">
 
   <div style="position:relative;background:white;border-radius:10px">
@@ -172,7 +172,7 @@
 
 
 
-<div *ngIf="false"
+<div *ngIf="_control.showBestPlayer"
   style="z-index:999;position:fixed;left:0px;top:0px;background:rgb(73, 73, 73, 0.5);height:100%;width:100%;display:flex;align-items:center;justify-content:center">
 
   <div style="width:85%;position:relative;background:white;border-radius:10px">
@@ -241,9 +241,9 @@
 
 
 
-<div *ngIf="true"
+<div *ngIf="_control.showBuyNow"
   style="z-index:999;position:fixed;left:0px;top:0px;background:rgb(73, 73, 73, 0.5);height:100%;width:100%">
-  <div style="height:45%"></div>
+  <div style="height:45%" (click)="_control.showBuyNow = false"></div>
   <div style="height:55%;width:100%;background:white;border-radius:0px">
 
     <div style="padding:15px;">
@@ -252,7 +252,7 @@
           <div style="font-weight:500;font-size:22px">
               $2.200
             </div>
-          <i class="fas fa-times" style="font-size:18px;color:#bbb"></i>
+          <i (click)="_control.showBuyNow = false" class="fas fa-times" style="font-size:18px;color:#bbb"></i>
       </div>
 
       <div style="height:20px"></div>
@@ -306,7 +306,7 @@
 
       <div style="height:40px"></div>
       <div
-      style="font-size:15px;padding:10px;border-radius: 5px;width:100%;text-align:center;font-weight:500;color:white;background:slateblue">
+      style="font-size:15px;padding:10px;border-radius: 5px;width:100%;text-align:center;font-weight:500;color:white;background:#999">
       COMPRAR
     </div>
 

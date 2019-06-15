@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ControlService } from 'src/app/services/control.service';
 
 @Component({
   selector: 'app-user',
@@ -11,9 +13,17 @@ export class UserComponent implements OnInit {
   isB = false;
   isC = false;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private _control: ControlService
+    ) { }
 
   ngOnInit() {
+  }
+
+  openContent() {
+    this.router.navigateByUrl('/content');
+    this._control.isHome = false;
   }
 
   change(letra) {

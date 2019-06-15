@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ControlService } from 'src/app/services/control.service';
 
-
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-home2',
+  templateUrl: './home2.component.html',
+  styleUrls: ['./home2.component.css']
 })
-export class HomeComponent implements OnInit {
-  list = [1,2,3]
+export class Home2Component implements OnInit {
+
   posts2 = [
     {
       isPronto: true,
@@ -17,7 +16,7 @@ export class HomeComponent implements OnInit {
       mes: 'Mayo',
       participantes: '4/10',
       hora: '16:40 - 17:40',
-      direccion: 'Cancha Mira Flores',
+      direccion: 'Simon Bolivar 802',
       precio: '$2.600'
     },
     {
@@ -26,7 +25,7 @@ export class HomeComponent implements OnInit {
       mes: 'Mayo',
       participantes: '9/10',
       hora: '20:00 - 17:40',
-      direccion: 'Cancha Mira Flores',
+      direccion: 'Simon Bolivar 802',
       precio: 'Gratis'
     },{  
       isPronto: false,
@@ -34,7 +33,7 @@ export class HomeComponent implements OnInit {
       mes: 'Mayo',
       participantes: '6/10',
       hora: '19:50 - 17:40',
-      direccion: 'Cancha Mira Flores',
+      direccion: 'Simon Bolivar 802',
       precio: '$2.600'
     }
   ]
@@ -129,8 +128,8 @@ export class HomeComponent implements OnInit {
   }
 
   openContent() {
-    this.router.navigateByUrl('/contenido');
-    this._control.isUser = false;
+    this.router.navigateByUrl('/content');
+    this._control.isHome = false;
   }
 
   subir() {
@@ -145,3 +144,4 @@ export class HomeComponent implements OnInit {
   }
 
 }
+

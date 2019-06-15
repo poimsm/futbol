@@ -1,0 +1,118 @@
+<!-- <div style="padding:15px">
+  <div>
+    <div>
+      Hoy, 18:30
+    </div>
+    <img src="assets/" alt="">
+
+  </div>
+</div> -->
+
+<div *ngIf="true" style="margin-top:0px;padding:15px;background:white;width:100%">
+
+  <!-- <h6>Proximamente</h6> -->
+
+  <div style="height:10px"></div>
+
+  <div *ngFor="let item of list"
+    style="margin-bottom:20px;padding:15px;background:white;border-radius:6px;border:1px solid #eee">
+    <div style="width:100%;display:flex;align-items:center;justify-content:space-between">
+      <div style="color:#777;font-weight:500;font-size:14px">
+        Viernes, 14 de mayo, 19:40
+      </div>
+      <i (click)="showShare = true" class="fas fa-share" style="color:#bbb;font-size:18px"></i>
+    </div>
+
+
+    <div style="height:10px"></div>
+
+    <!-- <h4>8 de 10 Jugadores Ya Inscritos</h4> -->
+
+
+    <div style="display:Flex;align-items:center">
+      <div
+        style="width:140px;text-align:center;background:white;color:#777;padding:5px;border-radius:6px;font-size:14px">
+        <i class="fas fa-futbol" style="font-size:16px;color:#bbb;margin-right:10px"></i>
+        8/10 jugadores
+      </div>
+      <!-- <div style="background:limegreen;color:white;margin-left:10px;font-size:14px;border-radius:2px">
+          Pronto
+        </div> -->
+    </div>
+
+    <div style="padding-left:11px;color:#888">
+      <i class="fas fa-map-marker-alt" style="margin-right:10px;color:lightsalmon;font-size:16px"></i>
+      Cancha Mira Flores
+    </div>
+
+
+    <!-- <div style="width:100%;display:flex;justify-content:flex-end">
+          <div
+          style="font-weight:500;text-align:center;font-size:14px;width:60px;padding:3px;color:#057AFF;border-radius:5px;border:1px solid dodgerblue">
+          Unirse
+        </div>
+      </div> -->
+
+
+    <div style="margin-top:5px;display:flex;align-items:center;justify-content:space-between">
+
+      <!-- <div style="color:#888">
+          Quienes van
+        </div> -->
+
+      <div>
+        <img src="assets/u01.jpg"
+          style="border:0px solid #fff;margin-left:10px;width:30px;height:30px;border-radius:50%;object-fit:cover">
+        <img src="assets/u01.jpg"
+          style="border:0px solid #fff;margin-left:10px;width:30px;height:30px;border-radius:50%;object-fit:cover">
+        <img src="assets/u01.jpg"
+          style="border:0px solid #fff;margin-left:10px;width:30px;height:30px;border-radius:50%;object-fit:cover">
+      </div>
+
+      <div (click)="openContent()"
+        style="font-weight:500;text-align:center;font-size:14px;width:60px;padding:3px;color:#057AFF;border-radius:5px;border:1px solid dodgerblue">
+        Ver
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+</div>
+
+
+
+<div *ngIf="showShare" (click)="showShare = false"
+  style="z-index:999;position:fixed;left:0px;top:0px;background:rgb(73, 73, 73, 0.5);height:100%;width:100%;display:flex;align-items:center;justify-content:center">
+
+  <div style="width:80%;position:relative;background:white;border-radius:10px">
+
+    <div style="padding:25px;padding-bottom:15px">
+
+      <div style="color:#444;font-weight:500;font-size:18px;width:100%;text-align:center">
+        Compartir evento
+      </div>
+
+      <hr>
+
+      <div style="height:10px"></div>
+
+      <div style="color:#666">
+        Link del evento
+      </div>
+      <div style="color:#9495AA">
+          https://we-upto.cl/evento-102
+        </div>
+        <div style="height:20px"></div>
+        <div
+        style="padding:10px;border-radius: 0px 0px 10px 10px;width:100%;text-align:right;color:darkcyan">
+        COPIAR
+      </div>
+    </div>
+    
+  </div>
+
+</div>

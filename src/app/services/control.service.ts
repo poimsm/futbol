@@ -5,9 +5,12 @@ import { Injectable } from '@angular/core';
 })
 export class ControlService {
 
-  isHome = true;
+  isHome = false;
   showSidenav = false;
-  isUser = false;
+  isUser = true;
+  showBuyNow = false;
+  showBestPlayer = false;
+  showRankingGame = false;
 
   constructor() { }
   

@@ -8,7 +8,8 @@ import { ControlService } from 'src/app/services/control.service';
 })
 export class SidenavComponent implements OnInit {
 
-  constructor(private _control: ControlService) { }
+
+  constructor(public _control: ControlService) { }
 
   ngOnInit() {
   }
