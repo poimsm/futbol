@@ -9,123 +9,46 @@ import { ControlService } from 'src/app/services/control.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  list = [1,2,3]
-  posts2 = [
-    {
-      isPronto: true,
-      dia: '23',
-      mes: 'Mayo',
-      participantes: '4/10',
-      hora: '16:40 - 17:40',
-      direccion: 'Cancha Mira Flores',
-      precio: '$2.600'
-    },
-    {
-      isPronto: false,
-      dia: '24',
-      mes: 'Mayo',
-      participantes: '9/10',
-      hora: '20:00 - 17:40',
-      direccion: 'Cancha Mira Flores',
-      precio: 'Gratis'
-    },{  
-      isPronto: false,
-      dia: '28',
-      mes: 'Mayo',
-      participantes: '6/10',
-      hora: '19:50 - 17:40',
-      direccion: 'Cancha Mira Flores',
-      precio: '$2.600'
-    }
-  ]
-
-  posts = [
-    {
-      usuario: {
-        nombre: 'Daniel',
-        tipo: 'Organizador',
-        img: {
-          url: 'assets/u01.jpg'
-        }
-      },
-      mensaje: 'Nuevo Partido Cabros Sumensee',
-      img: 'assets/p01.jpg',
-      participantes: '4/10 jugadores',
-      distancia: 2.5,
-      precio: '$2.500',
-      fecha: '15/5',
-      hora: '17:00'
-    },
-    {
-      usuario: {
-        nombre: 'Ferh Doop',
-        tipo: 'Organizador',
-        img: {
-          url: 'assets/u02.jpg'
-        }
-      },
-      mensaje: 'Hoy partido cancha sur.. go go',
-      img: 'assets/p02.jpg',
-      participantes: '8/10 jugadores',
-      distancia: 1.3,
-      precio: 'Gratis',
-      fecha: '12/5',
-      hora: '20:10'
-    },
-    {
-      usuario: {
-        nombre: 'Daniel',
-        tipo: 'Organizador',
-        img: {
-          url: 'assets/u01.jpg'
-        }
-      },
-      mensaje: 'Nuevo Partido Cabros Sumensee',
-      img: 'assets/p01.jpg',
-      participantes: '4/10 jugadores',
-      distancia: 2.5,
-      precio: '$2.500',
-      fecha: '15/5',
-      hora: '17:00'
-    },
-    {
-      usuario: {
-        nombre: 'Ferh Doop',
-        tipo: 'Organizador',
-        img: {
-          url: 'assets/u02.jpg'
-        }
-      },
-      mensaje: 'Hoy partido cancha sur.. go go',
-      img: 'assets/p02.jpg',
-      participantes: '8/10 jugadores',
-      distancia: 1.3,
-      precio: 'Gratis',
-      fecha: '12/5',
-      hora: '20:10'
-    }
-  ];
-
-  showFlecha: boolean;
-
-
+ 
+  isA = true;
+  isB = false;
+  isC = false;
+list = [1,2,3]
   constructor(
     private router: Router,
     private _control: ControlService
   ) {
 
-    let self = this;
+    // let self = this;
 
-    window.addEventListener('scroll', function (e) {
-      let scrollPosition = window.scrollY;
+    // window.addEventListener('scroll', function (e) {
+    //   let scrollPosition = window.scrollY;
 
-      if (scrollPosition >= 100) {
-        self.showFlecha = true;
-      } else {
-        self.showFlecha = false;
-      }
-    });
+    //   if (scrollPosition >= 100) {
+    //     self.showFlecha = true;
+    //   } else {
+    //     self.showFlecha = false;
+    //   }
+    // });
 
+  }
+
+  change(letra) {
+    if (letra == 'A') {
+      this.isA = true;
+      this.isB = false;
+      this.isC = false;
+    }
+    if (letra == 'B') {
+      this.isA = false;
+      this.isB = true;
+      this.isC = false;
+    }
+    if (letra == 'C') {
+      this.isA = false;
+      this.isB = false;
+      this.isC = true;
+    }
   }
 
   openContent() {

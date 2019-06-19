@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Home2Component } from './home2.component';
+import { PartidoContenidoComponent } from './partido-contenido.component';
 
-describe('Home2Component', () => {
-  let component: Home2Component;
-  let fixture: ComponentFixture<Home2Component>;
+describe('PartidoContenidoComponent', () => {
+  let component: PartidoContenidoComponent;
+  let fixture: ComponentFixture<PartidoContenidoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Home2Component ]
+      declarations: [ PartidoContenidoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Home2Component);
+    fixture = TestBed.createComponent(PartidoContenidoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

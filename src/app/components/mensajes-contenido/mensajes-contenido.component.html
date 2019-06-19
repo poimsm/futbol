@@ -1,0 +1,190 @@
+<div style="padding:15px;padding-bottom:10px;background:#999">
+  <div style="display:flex;align-items:center">
+    <i class="fas fa-times" style="font-size:20px;color:white"></i>
+    <div style="margin-left:20px;color:white;font-weight:500">
+      Cancha Mira Flores
+      <span style="font-size:13px">
+        Lunes 17 | 18:30
+      </span>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="true" style="padding:15px">
+
+  <div style="height:10px"></div>
+
+  <div style="display:flex;align-items:flex-start">
+    <div style="width:35px;height:35px;margin-right:10px">
+      <img src="assets/u01.jpg" style="width:35px;height:35px;object-fit:cover;border-radius:50%">
+    </div>
+    <div style="width:100%">
+      <div style="display:flex;justify-content:space-between">
+        <div style="font-size:14px;color:#666">
+          Oscar Garcia
+        </div>
+        <div style="font-size:13px;color:#999">
+          hace 1 hora
+        </div>
+      </div>
+
+      <div style="font-size:15px;display:inline-block;padding:5px;border:1px solid #eee;border-radius:10px;color:#666">
+        Hola como llego al partido?
+      </div>
+    </div>
+  </div>
+
+  <div style="height:30px"></div>
+
+
+  <div style="display:flex;align-items:flex-start">
+    <div style="width:35px;height:35px;margin-right:10px">
+      <img src="assets/u01.jpg" style="width:35px;height:35px;object-fit:cover;border-radius:50%">
+    </div>
+    <div style="width:100%">
+      <div style="display:flex;justify-content:space-between">
+        <div style="font-size:14px;color:#666">
+          Daniel SES
+        </div>
+        <div style="font-size:13px;color:#999">
+          hace 1 hora
+        </div>
+      </div>
+
+      <div style="font-size:15px;display:inline-block;padding:5px;border:1px solid #eee;border-radius:10px;color:#666">
+        A que hora?
+      </div>
+    </div>
+  </div>
+
+  <div style="height:30px"></div>
+
+
+
+  <div style="display:flex;align-items:flex-start">
+    <div style="width:35px;height:35px;margin-right:10px">
+      <img src="assets/u01.jpg" style="width:35px;height:35px;object-fit:cover;border-radius:50%">
+    </div>
+    <div style="width:100%">
+      <div style="display:flex;justify-content:space-between">
+        <div style="font-size:14px;color:#666">
+          Marcos Fantasma
+        </div>
+        <div style="font-size:13px;color:#999">
+          hace 1 hora
+        </div>
+      </div>
+
+      <div style="font-size:15px;display:inline-block;padding:5px;border:1px solid #eee;border-radius:10px;color:#666">
+        OK
+      </div>
+    </div>
+  </div>
+
+  <div style="height:30px"></div>
+
+
+  <div style="display:flex;align-items:flex-start">
+      
+      <div style="width:100%">
+        <div style="display:flex;justify-content:space-between">
+          
+          <div style="font-size:13px;color:#999">
+            hace 1 hora
+          </div>
+          <div style="font-size:14px;color:#666">
+              <!-- <span style="margin-right:5px;font-size:13px;color:#999">
+                  hace 1 hora
+                </span>  -->
+            Marcos Fantasma
+            <!-- <span style="margin-left:5px;font-size:13px;color:#999">
+                hace 1 hora
+              </span>  -->
+
+            
+            </div>
+        </div>
+  
+        <div style="width:100%;display:flex;justify-content:flex-end">
+            <div style="font-size:15px;display:inline-block;padding:5px;border:0px solid #eee;background:dodgerblue;color:white;border-radius:10px">
+                LLego en 10min
+              </div>
+        </div>
+       
+      </div>
+      <div style="width:35px;height:35px;margin-left:10px">
+          <img src="assets/u02.jpg" style="width:35px;height:35px;object-fit:cover;border-radius:50%">
+        </div>
+    </div>
+
+  <div style="height:20px"></div>
+
+
+
+  <div style="z-index:900;position:fixed;bottom:60px;left:0px;width:100%">
+      <div style="display:flex;align-items:center;justify-content:space-around">
+          <div style="width:250px;border:1px solid #eee;border-radius:10px;padding:4px;color:#999">
+            Responder...
+          </div>
+        
+          <div style="color:white;padding:3px;font-weight:600;font-size:15px;background:orange;border-radius:5px">
+            Enviar
+          </div>
+        
+         </div>
+  </div>
+
+ 
+
+
+
+</div>
+
+<div *ngIf="!showMatch" style="position:fixed;bottom:0px;left:0px;width:100%;text-align:center">
+  <i (click)="showMatch=true" class="fas fa-angle-up" style="font-size:24px;color:orange"></i>
+</div>
+
+<div *ngIf="showMatch" style="z-index:999;position:fixed;top:0px;left:0px;width:100%;height:100%;display:flex;flex-direction:column;justify-content:space-between">
+  <div (click)="showMatch=false" style="background:rgb(73, 73, 73, 0.5);height:100%;width:100%">
+  </div>
+  <div style="padding:15px;width:100%;background:orange">
+
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="color:white;font-size:20px;font-weight:700">
+        Match
+      </div>
+      <i (click)="showMatch=false" class="fas fa-angle-down" style="font-size:22px;color:white"></i>
+    </div>
+
+
+    <div style="display:flex;justify-content:flex-start">
+      <i class="far fa-clock" style="margin-top:5px;margin-right:10px;font-size:18px;color:#fff"></i>
+      <div style="font-size:15px;color:#fff">
+        Domingo, 15 de junio
+        <div style="color:#fff">
+          17:30 - 18:30
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:10px;display:flex;justify-content:flex-start">
+      <i class="fas fa-map-marker-alt" style="margin-top:5px;margin-right:10px;font-size:18px;color:#fff"></i>
+      <div style="font-size:15px;color:#fff">
+        Cancha Mira Flores
+        <div style="color:#fff">
+          Av. Ramón Picarte 1023, Valdivia, Chile
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:10px;display:flex;justify-content:flex-start">
+      <i class="fas fa-user-alt" style="margin-top:5px;margin-right:10px;font-size:15px;color:#fff"></i>
+      <div style="font-size:15px;color:#fff">
+        Organizado por: Oscar García Fuentes
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
