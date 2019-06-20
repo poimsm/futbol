@@ -13,7 +13,7 @@ export class AuthService {
 
 
 
-  constructor(private http: HttpClient) {  this.loadStorage(); }
+  constructor(private http: HttpClient) { this.loadStorage(); }
 
 
   loginIn(email, password) {
@@ -82,7 +82,15 @@ export class AuthService {
 
   signUp(name, email, password) {
     const url = `${this.apiURL}/users/signup`;
-    const body = { name, email, password };
+    const body = {
+      name,
+      email,
+      password,
+      img: {
+        id: '',
+        url: 'https://res.cloudinary.com/ddon9fx1n/image/upload/v1561055940/capturas/descarga.jpg'
+      }
+    };
     return this.http.post(url, body).toPromise();
   }
 

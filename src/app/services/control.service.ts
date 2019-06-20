@@ -13,6 +13,8 @@ export class ControlService {
   showRankingGame = false;
   showLogin = false;
 
+  swapData: any;
+
   isModal: boolean;
   isPartido: boolean;
   back = '';
@@ -46,6 +48,16 @@ export class ControlService {
 
   }
 
+  getCurrentPage() {
+    let currentPage = '';
+    this.pages.forEach(page => {
+      if (page.isActive) {
+        currentPage = page.page;
+      }
+    });
+    return currentPage;
+  }
+
   activeOnePage(page) {
     this.pages.forEach(data => {
       if (data.page == page) {
@@ -70,9 +82,7 @@ export class ControlService {
     if (type == 'modal') {
       this.isModal = true;
     } else {
-      this.isModal = false;
-      console.log('pasoo');
-      
+      this.isModal = false;      
     }
       this.isHome = true;
       this.activeOnePage(page);

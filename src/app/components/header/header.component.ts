@@ -33,6 +33,7 @@ export class HeaderComponent implements OnInit {
     public _control: ControlService,
     private _auth: AuthService
   ) {
+    
     this.moveHeader();
     this._auth.authState.subscribe((data: any) => {
 
@@ -40,7 +41,6 @@ export class HeaderComponent implements OnInit {
         this.user = data.authData.user;
         this.token = data.authData.token;
         this.isAuth = true;
-        console.log('uue',this.user)
       } else {
         this.isAuth = false;
       }
@@ -101,6 +101,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('url',this.router.url);
+
   }
 
 }

@@ -42,7 +42,17 @@ export class DataService {
     return this.http.get(url).toPromise();
   }
 
-  createMensajes(body) {
+  getMensajesGrupales(id) {
+    const url = `${this.apiURL}/futbol/mensajes-grupales?id=${id}`;
+    return this.http.get(url).toPromise();
+  }
+
+  getMensajesChat(id) {
+    const url = `${this.apiURL}/futbol/mensajes-chat?id=${id}`;
+    return this.http.get(url).toPromise();
+  }
+
+  createMensaje(body) {
     const url = `${this.apiURL}/futbol/crear-mensaje`;
     return this.http.post(url, body).toPromise();
   }
