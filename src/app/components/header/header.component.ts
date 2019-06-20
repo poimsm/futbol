@@ -40,6 +40,7 @@ export class HeaderComponent implements OnInit {
         this.user = data.authData.user;
         this.token = data.authData.token;
         this.isAuth = true;
+        console.log('uue',this.user)
       } else {
         this.isAuth = false;
       }

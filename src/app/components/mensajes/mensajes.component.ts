@@ -19,6 +19,8 @@ export class MensajesComponent implements OnInit {
   ngOnInit() {
   }
 
+ 
+
   openConent() {
     this._control.openPage('mensaje', 'modal');
     this.router.navigateByUrl('mensaje');

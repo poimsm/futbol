@@ -17,14 +17,34 @@ export class DataService {
     return this.http.get(url).toPromise();
   }
 
-  getMisPartidos() {
-    const url = `${this.apiURL}/futbol/mis-partidos`;
+  getOnePartido(id) {
+    const url = `${this.apiURL}/futbol/partido?id=${id}`;
     return this.http.get(url).toPromise();
+  }
+
+  getJugadores(ids) {
+    const url = `${this.apiURL}/futbol/jugadores`;
+    return this.http.post(url, ids).toPromise();
+  }
+
+  getMisPartidos(id) {
+    const url = `${this.apiURL}/futbol/mis-partidos?id=${id}`;
+    return this.http.get(url).toPromise();
+  }
+
+  joinPartido(id, body) {
+    const url = `${this.apiURL}/futbol/unirse-al-partido?id=${id}`;
+    return this.http.post(url, body).toPromise();
   }
 
   getMensajes(id) {
     const url = `${this.apiURL}/futbol/mensajes?id=${id}`;
     return this.http.get(url).toPromise();
+  }
+
+  createMensajes(body) {
+    const url = `${this.apiURL}/futbol/crear-mensaje`;
+    return this.http.post(url, body).toPromise();
   }
 
   buyTicket(body) {

@@ -1,8 +1,8 @@
 <div style="padding:15px;padding-bottom:10px;background:darkorange">
   <div style="display:flex;align-items:center">
-    <i class="fas fa-times" style="font-size:20px;color:white"></i>
+    <i (click)="close()" class="fas fa-times" style="font-size:20px;color:white"></i>
     <div style="margin-left:20px;color:white;font-weight:500">
-      Cancha Mira Flores
+      {{partido.cancha.nombre}}
     </div>
   </div>
 </div>
@@ -14,21 +14,18 @@
   <div style="text-align:center;color:darkorange;font-weight:700;width:60px;border-bottom:0px solid darkorange">
     MAPA
   </div>
-  
+
 </div>
 
 
 <div style="padding:15px">
 
-  <!-- <h5>Info</h5> -->
-
-
   <div style="display:flex;justify-content:flex-start">
     <i class="far fa-clock" style="margin-top:5px;margin-right:10px;font-size:18px;color:#bbb"></i>
     <div style="font-size:15px;color:#444">
-      Domingo, 15 de junio
+      {{partido.fecha2}}
       <div style="color:#888">
-        17:30 - 18:30
+        {{partido.hora2}}
       </div>
     </div>
   </div>
@@ -36,9 +33,9 @@
   <div style="margin-top:10px;display:flex;justify-content:flex-start">
     <i class="fas fa-map-marker-alt" style="margin-top:5px;margin-right:10px;font-size:18px;color:#bbb"></i>
     <div style="font-size:15px;color:#444">
-      Cancha Mira Flores
+      {{partido.cancha.nombre}}
       <div style="color:#888">
-        Av. Ramón Picarte 1023, Valdivia, Chile
+        {{partido.cancha.direccion}}
       </div>
     </div>
   </div>
@@ -46,7 +43,7 @@
   <div style="margin-top:10px;display:flex;justify-content:flex-start">
     <i class="fas fa-user-alt" style="margin-top:5px;margin-right:10px;font-size:15px;color:#bbb"></i>
     <div style="font-size:15px;color:#444">
-      Organizado por: Oscar García Fuentes
+      Organizado por: {{partido.organizador.name}}
     </div>
   </div>
 
@@ -55,163 +52,78 @@
 
 
 
-  <div style="padding:15px">
+<div style="padding:15px">
 
   <div style="margin-bottom:15px;color:orange;font-size:16px;font-weight:600">
-    Equipos ( 5 vs 5 ) - 6/10 competidores
+    Equipos ( 5 vs 5 ) - {{partido.jugadores - partido.cupos}}/{{partido.jugadores}} competidores
   </div>
 
-  <div style="padding:3px;background:#bbb;width:180px;border-radius:3px;color:white;font-weight:500;font-size:11px;display:flex;justify-content:center;align-items:center">
+  <div
+    style="padding:3px;background:#bbb;width:180px;border-radius:3px;color:white;font-weight:500;font-size:11px;display:flex;justify-content:center;align-items:center">
     CAMISETA BLANCA
     <i class="fas fa-tshirt" style="color:white;margin-left:10px"></i>
   </div>
-  <!-- <div style="border-bottom:1px solid #eee;padding-left:0px;color:#999">
-    Camiseta Blanca
-    <i class="fas fa-tshirt" style="font-size:15px;margin-left:10px;color:#ccc;"></i>
-  </div>  -->
-  <div style="margin-top:15px;display:flex">
-      <div style="border-radius:5px 5px 0px 0px;border:1px solid #eee;margin-right:20px;">
-        <img src="assets/u01.jpg" style="width:60px;height:40px;object-fit:cover">
-        <div style="padding:4px;font-size:14px">
-          Oscar
-        </div>
+
+  <div style="display:flex;flex-wrap:wrap;align-items:center">
+
+    <div *ngFor="let jugador of camisetaBlanca"
+      style="margin-top:15px;border-radius:5px 5px 0px 0px;border:1px solid #eee;margin-right:20px;">
+      <img [src]="jugador.img.url" style="width:60px;height:40px;object-fit:cover">
+      <div style="width:60px;padding:4px;font-size:14px;height:25px;overflow:hidden">
+        {{jugador.name}}
       </div>
-      <div style="border-radius:5px 5px 0px 0px;border:1px solid #eee;margin-right:20px;">
-        <img src="assets/u02.jpg" style="width:60px;height:40px;object-fit:cover">
-        <div style="padding:4px;font-size:14px">
-          Daniel
-        </div>
-      </div>
-      <div style="border-radius:5px 5px 0px 0px;border:1px solid #eee;margin-right:20px;">
-        <img src="assets/u02.jpg" style="width:60px;height:40px;object-fit:cover">
-        <div style="padding:4px;font-size:14px">
-          Juan
-        </div>
-      </div>
-      
-   
+    </div>
+
   </div>
 
-  <!-- <hr> -->
 
   <div style="height:20px"></div>
-  <div style="padding:3px;background:#bbb;width:180px;border-radius:3px;color:white;font-weight:500;font-size:11px;display:flex;justify-content:center;align-items:center">
+
+  <div
+    style="padding:3px;background:#bbb;width:180px;border-radius:3px;color:white;font-weight:500;font-size:11px;display:flex;justify-content:center;align-items:center">
     CAMISETA NEGRA
-      <i class="fas fa-tshirt" style="margin-right:5px;margin-left:10px;color:#333;"></i>
+    <i class="fas fa-tshirt" style="margin-right:5px;margin-left:10px;color:#333;"></i>
   </div>
-  <!-- <div style="border-bottom:1px solid #eee;padding-left:0px;color:#999">
-    Camiseta Negra
-    <i class="fas fa-tshirt" style="font-size:15px;margin-left:10px;color:#888;"></i>
-  </div> -->
-  <div style="margin-top:15px;display:flex">
-    <div style="border-radius:5px 5px 0px 0px;border:1px solid #eee;margin-right:20px;">
-      <img src="assets/u02.jpg" style="width:60px;height:40px;object-fit:cover">
-      <div style="padding:4px;font-size:14px">
-        Marcos
+  <div style="display:flex;flex-wrap:wrap;align-items:center">
+
+    <div *ngFor="let jugador of camisetaNegra"
+      style="margin-top:15px;border-radius:5px 5px 0px 0px;border:1px solid #eee;margin-right:20px;">
+      <img [src]="jugador.img.url" style="width:60px;height:40px;object-fit:cover">
+      <div style="width:60px;padding:4px;font-size:14px;height:25px;overflow:hidden">
+        {{jugador.name}}
       </div>
     </div>
-    <div style="border-radius:5px 5px 0px 0px;border:1px solid #eee;margin-right:20px;">
-      <img src="assets/u02.jpg" style="width:60px;height:40px;object-fit:cover">
-      <div style="padding:4px;font-size:14px">
-        Eduardo
-      </div>
-    </div>
-    <!-- <div>
-      <img src="assets/u01.jpg" style="margin-right:20px;width:35px;height:35px;border-radius:50%;object-fit:cover">
-      <div style="font-size:14px">
-        Eduardo
-      </div>
-    </div> -->
-    
+
   </div>
 
 </div>
 
 
 
-  <div style="padding:15px;padding-top:30px;padding-bottom:30px">
-    <div style="color:orange;font-weight:600;margin-bottom:15px">
-      Comentarios (20)
-    </div>
-  <!-- <h5>Conversaciones</h5> -->
-
-  <!-- <div>
-    Comentarios
+<div style="padding:15px;padding-top:30px;padding-bottom:30px">
+  <div style="color:orange;font-weight:600;margin-bottom:15px">
+    Comentarios ({{mensajes.length}})
   </div>
 
-  <div style="display:flex;justify-content:space-between">
-    <div>
-        Ver mapa
+
+  <div *ngFor="let mensaje of mensajes" style="margin-top:20px;display:flex;align-items:flex-start">
+    <div style="margin-top:5px;height:35px;width:35px">
+      <img [src]="mensaje.usuario.img.url" style="width:35px;height:35px;border-radius:50%;object-fit:cover">
     </div>
-    <i class="fas fa-angle-right" style="color:#bbb;font-size:18px"></i>
-   
-  </div> -->
-
-
-  <div *ngIf="true">
-
-
-    <div style="display:flex;align-items:flex-start">
-      <div style="margin-top:5px;height:35px;width:35px">
-        <img src="assets/u01.jpg" style="width:35px;height:35px;border-radius:50%;object-fit:cover">
+    <div style="margin-left:10px">
+      <div>
+        <span style="font-size:15px;font-weight:500">
+          {{mensaje.usuario.name}}:
+        </span>
+        <span style="font-size:15px;color:#444">
+          {{mensaje.mensaje}}
+        </span>
       </div>
-      <div style="margin-left:10px">
-        <div>
-          <span style="color:#4089BC;font-size:15px;font-weight:500">
-            Oscar Garcia:
-          </span>
-          <span style="font-size:15px;color:#444">
-            Este texto es un comentarion?
-          </span>
-        </div>
+      <div style="text-align:right;color:#999;font-size:13px">
+        hace 4 horas
       </div>
     </div>
-
-    <hr>
-    <div style="margin-top:20px;display:flex;align-items:flex-start">
-      <div style="margin-top:5px;height:35px;width:35px">
-        <img src="assets/u02.jpg" style="width:35px;height:35px;border-radius:50%;object-fit:cover">
-      </div>
-      <div style="margin-left:10px">
-        <div>
-          <span style="font-size:15px;font-weight:500">
-            Lionel Messi
-          </span>
-          <span style="font-size:15px;color:#444">
-            nuevo comentario por aca si pero quiero agregar
-          </span>
-        </div>
-        <div style="text-align:right;color:#999;font-size:13px">
-          hace 4 horas
-        </div>
-      </div>
-    </div>
-
-
-    <hr>
-    <div style="margin-top:20px;display:flex;align-items:flex-start">
-      <div style="margin-top:5px;height:35px;width:35px">
-        <img src="assets/u02.jpg" style="width:35px;height:35px;border-radius:50%;object-fit:cover">
-      </div>
-      <div style="margin-left:10px">
-        <div>
-          <span style="font-size:15px;font-weight:500">
-            Lionel Messi
-          </span>
-          <span style="font-size:15px;color:#444">
-            nuevo comentario por aca si pero quiero agregar
-          </span>
-        </div>
-        <div style="text-align:right;color:#999;font-size:13px">
-          hace 4 horas
-        </div>
-      </div>
-    </div>
-  
-
-
   </div>
-
 
 
   <div style="height:50px"></div>
@@ -219,17 +131,88 @@
 
 
 
-<div *ngIf="true"
+<div
   style="position:fixed;bottom:0px;left:0px;width:100%;background:#fff;border-top:1px solid #eee;display:flex;align-items:center;justify-content:space-between">
   <div>
     <div style="margin-left:20px;color:orange;font-weight:500;font-size:18px">
-      Valor: $2.500
+      Valor: ${{partido.cancha.precio}}
     </div>
   </div>
   <div style="display:inline-block">
-    <div (click)="comprar()"
+    <div *ngIf="partido?.cupos != 0" (click)="showBuyNow=true;"
       style="background:orange;color:white;font-weight:500;padding:10px;padding-left:10px;padding-right:10px;">
       Unirse ahora
     </div>
+    <div *ngIf="partido?.cupos == 0"
+      style="background:orange;color:white;font-weight:500;padding:10px;padding-left:10px;padding-right:10px;">
+      ¡Partido completo!
+    </div>
   </div>
+</div>
+
+
+
+
+
+
+<div *ngIf="showBuyNow"
+  style="z-index:999;position:fixed;left:0px;top:0px;background:rgb(73, 73, 73, 0.5);height:100%;width:100%;display:flex;flex-wrap:wrap;flex-direction:column">
+  <div style="flex-grow:1;width:100%" (click)="showBuyNow = false"></div>
+  <div style="width:100%;background:white;border-radius:0px">
+
+    <div style="padding:15px;">
+
+      <div style="width:100%;display:flex;justify-content:space-between;align-items:center">
+        <div style="font-weight:500;font-size:22px">
+          $2.500
+        </div>
+        <i (click)="showBuyNow = false" class="fas fa-times" style="font-size:18px;color:#bbb"></i>
+      </div>
+
+      <div style="height:20px"></div>
+
+      <div>
+        <div style="color:#555">
+          <i class="far fa-map" style="color:#bbb;font-size:18px"></i>
+          {{partido.cancha.nombre}}
+        </div>
+        <div style="color:#555">
+          <i class="fas fa-map-marker-alt" style="color:#bbb;font-size:18px"></i>
+          {{partido.cancha.direccion}}
+        </div>
+        <div style="color:#555">
+          <i class="far fa-clock" style="color:#bbb;font-size:18px"></i>
+          {{partido.fecha3}}
+        </div>
+      </div>
+
+      <div style="margin-top:30px;margin-bottom:20px;font-weight:500;font-size:18px;width:100%;text-align:center">
+        Seleccione color de camiseta
+      </div>
+
+      <div style="display:flex;align-items:center">
+        <div style="margin-right:20px">
+          Color:
+        </div>
+        <div (click)="isBlanco=true;isNegro=false" [ngStyle]="{'border': isBlanco ? '1px solid red':'1px solid #bbb'}"
+          style="padding:3px;padding-left:5px;padding-right:5px">
+          Blanco
+        </div>
+
+        <div (click)="isBlanco=false;isNegro=true" [ngStyle]="{'border': isNegro ? '1px solid red':'1px solid #bbb'}"
+          style="margin-left:30px;padding:3px;padding-left:5px;padding-right:5px">
+          Negro
+        </div>
+      </div>
+
+      <div style="height:40px"></div>
+      <div (click)="unirse()"
+        style="font-size:15px;padding:10px;border-radius: 5px;width:100%;text-align:center;font-weight:500;color:white;background:orange">
+        COMPRAR
+      </div>
+
+    </div>
+
+  </div>
+
 </div>

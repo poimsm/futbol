@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ControlService } from 'src/app/services/control.service';
+import { DataService } from 'src/app/services/data.service';
 
 
 @Component({
@@ -10,18 +11,25 @@ import { ControlService } from 'src/app/services/control.service';
 })
 export class PartidosComponent implements OnInit {
 
+  partidos = [];
+
   constructor(
     private _control:ControlService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private _data: DataService
+  ) { 
+    _data.getPartidos().then((partidos: any) => {
+      this.partidos = partidos;      
+    })
+  }
 
   ngOnInit() {
     this._control.openPage('partidos', 'page');
   }
 
-  openPartido() {
+  openPartido(id) {
     this._control.openPage('partido', 'modal');
-    this.router.navigateByUrl('partido');
+    this.router.navigateByUrl(`partido/${id}`);
   }
 
 }

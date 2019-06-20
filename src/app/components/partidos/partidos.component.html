@@ -6,7 +6,51 @@
 
 
 
-  <div (click)="openPartido()" style="color:#222;display:flex;justify-content:space-between">
+  <div *ngFor="let partido of partidos" (click)="openPartido(partido._id)"
+    style="color:#222;display:flex;justify-content:space-between">
+    <div style="display:flex;align-items:center">
+      <img [src]="partido.organizador.img.url"
+        style="border:0px solid #fff;margin-right:10px;width:35px;height:35px;border-radius:50%;object-fit:cover">
+      <div>
+        <div style="margin-top:5px;display:flex;align-items:flex-start">
+          <div>
+            {{partido.cancha.nombre}}
+          </div>
+        </div>
+        <div>
+          {{partido.jugadores - partido.cupos}}/{{partido.jugadores}} jugadores
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:14px;text-align:right">
+        {{partido.hora1}}
+      </div>
+      <div style="height:10px"></div>
+      <div style="font-size:14px;color:limegreen">
+        {{partido.cancha.precio}}
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;margin-top:10px;font-size:15px">
+    <div style="margin-left:10px;color:#999">
+      <i class="fas fa-share" style="color:#bbb"></i>
+      Compartir
+    </div>
+    <div style="color:#999;margin-left:50px">
+      2.5 km
+    </div>
+  </div>
+
+
+  <div style="height:15px"></div>
+  <h6>Lunes 15 de junio</h6>
+
+
+
+
+
+  <div style="color:#222;display:flex;justify-content:space-between">
     <div style="display:flex;align-items:center">
       <img src="assets/u01.jpg"
         style="border:0px solid #fff;margin-right:10px;width:35px;height:35px;border-radius:50%;object-fit:cover">
@@ -29,153 +73,20 @@
         9:00
       </div>
       <div style="height:10px"></div>
-      <div style="font-size:14px;color:limegreen">
-        Gratis
-      </div>
-    </div>
-  </div>
-  <div style="display:flex;margin-top:10px;font-size:15px">
-      <div style="margin-left:10px;color:#999">
-          <i class="fas fa-share" style="color:#bbb"></i>
-          Compartir
-      </div>
-      <div style="color:#999;margin-left:50px">
-        2.5 km
-      </div>
-  </div>
-
-
-  <hr>
-
-  <div style="color:#222;display:flex;justify-content:space-between">
-    <div style="display:flex;align-items:center">
-      <img src="assets/u02.jpg"
-        style="border:0px solid #fff;margin-right:10px;width:35px;height:35px;border-radius:50%;object-fit:cover">
-
-      <div>
-        <div style="margin-top:5px;display:flex;align-items:flex-start">
-          <div>
-              <i class="fas fa-check-circle" style="color:orange"></i>
-
-            Cancha Mira Flores
-          </div>
-        </div>
-        <div>
-          10/10 jugadores
-        </div>
-      </div>
-
-    </div>
-    <div>
-      <div style="font-size:14px;text-align:right">
-        18:00
-      </div>
-      <div style="height:10px"></div>
       <div style="font-size:14px;">
         $2.500
       </div>
     </div>
   </div>
   <div style="display:flex;margin-top:10px;font-size:15px">
-      <div style="margin-left:10px;color:#999">
-          <i class="fas fa-share" style="color:#bbb"></i>
-          Compartir
-      </div>
-      <div style="color:#999;margin-left:50px">
-        1.4 km
-      </div>
+    <div style="margin-left:10px;color:#999">
+      <i class="fas fa-share" style="color:#bbb"></i>
+      Compartir
+    </div>
+    <div style="color:#999;margin-left:50px">
+      3.0 km
+    </div>
   </div>
- 
-
-  <div style="height:15px"></div>
-  <h6>Lunes 15 de junio</h6>
-
-
-
-  
-
-  <div style="color:#222;display:flex;justify-content:space-between">
-      <div style="display:flex;align-items:center">
-        <img src="assets/u01.jpg"
-          style="border:0px solid #fff;margin-right:10px;width:35px;height:35px;border-radius:50%;object-fit:cover">
-  
-        <div>
-  
-          <div style="margin-top:5px;display:flex;align-items:flex-start">
-            <div>
-              Cancha Mira Flores
-            </div>
-          </div>
-          <div>
-            8/10 jugadores
-          </div>
-        </div>
-  
-      </div>
-      <div>
-        <div style="font-size:14px;text-align:right">
-          9:00
-        </div>
-        <div style="height:10px"></div>
-        <div style="font-size:14px;">
-          $2.500
-        </div>
-      </div>
-    </div>
-    <div style="display:flex;margin-top:10px;font-size:15px">
-        <div style="margin-left:10px;color:#999">
-            <i class="fas fa-share" style="color:#bbb"></i>
-            Compartir
-        </div>
-        <div style="color:#999;margin-left:50px">
-          3.0 km
-        </div>
-    </div>
-  
-  
-    <hr>
-  
-    <div style="display:flex;justify-content:space-between">
-      <div style="color:#222;display:flex;align-items:center">
-        <img src="assets/u01.jpg"
-          style="border:0px solid #fff;margin-right:10px;width:35px;height:35px;border-radius:50%;object-fit:cover">
-  
-          <div>
-  
-          <div style="margin-top:5px;display:flex;align-items:flex-start">
-            <div>
-              Cancha Mira Flores
-            </div>
-          </div>
-          <div>
-            8/10 jugadores
-          </div>
-        </div>
-  
-      </div>
-      <div>
-        <div style="font-size:14px;text-align:right">
-          9:00
-        </div>
-        <div style="height:10px"></div>
-        <div style="font-size:14px;">
-          $2.500
-        </div>
-      </div>
-    </div>
-    <div style="display:flex;margin-top:10px;font-size:15px">
-        <div style="margin-left:10px;color:#999">
-            <i class="fas fa-share" style="color:#bbb"></i>
-            Compartir
-        </div>
-        <div style="color:#999;margin-left:50px">
-          2.5 km
-        </div>
-    </div>
-
-
-
-
 
 
 </div>

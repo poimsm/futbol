@@ -7,6 +7,7 @@ import { PartidosComponent } from './components/partidos/partidos.component';
 import { MensajesComponent } from './components/mensajes/mensajes.component';
 import { PartidoContenidoComponent } from './components/partido-contenido/partido-contenido.component';
 import { MensajesContenidoComponent } from './components/mensajes-contenido/mensajes-contenido.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'partidos', pathMatch: 'full' },
@@ -14,9 +15,9 @@ const routes: Routes = [
   { path: 'contenido', component: ContenidoComponent },
   { path: 'user', component: UserComponent },
   { path: 'partidos', component: PartidosComponent },
-  { path: 'partido', component: PartidoContenidoComponent },
-  { path: 'mensajes', component: MensajesComponent },
-  { path: 'mensaje', component: MensajesContenidoComponent },
+  { path: 'partido/:id', component: PartidoContenidoComponent },
+  { path: 'mensajes', component: MensajesComponent, canActivate: [AuthGuard] },
+  { path: 'mensaje', component: MensajesContenidoComponent, canActivate: [AuthGuard]  },
 
 
   { path: '**', component: PartidosComponent },
