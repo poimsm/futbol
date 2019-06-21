@@ -13,18 +13,18 @@
         </div>
         <div>
           <i (click)="openUser()" class="fas fa-user-circle" style="color:#fff;font-size:24px"></i>
-          <i (click)="showMenu()" class="fas fa-ellipsis-v" style="color:#fff;font-size:22px;margin-left:15px"></i>
+          <i (click)="showMenu()" class="fas fa-ellipsis-v" style="color:#fff;font-size:22px;margin-left:20px"></i>
         </div>
       </div>
     </div>
 
     <div style="margin-top:10px;width:100%;display:flex;justify-content:center">
-      <div (click)="changeView('partidos');togglePlaces('partidos')"
+      <div (click)="changeView('partidos')"
         [ngClass]="{'active': isPartidos, 'noActive': !isPartidos}"
         style="font-size:14px;font-weight:450;width:33%;display:inline-block;text-align:center">
         PARTIDOS
       </div>
-      <div (click)="changeView('mensajes');togglePlaces('mensajes')"
+      <div (click)="changeView('mensajes')"
         [ngClass]="{'active': isMensajes, 'noActive': !isMensajes}"
         style="font-size:14px;font-weight:450;width:33%;display:inline-block;text-align:center">
         MENSAJES
@@ -63,6 +63,42 @@
       Valdivia
     </div>
   </div>
+
+
+  <div *ngIf="_control.showUserProfile"
+  style="z-index:999;position:fixed;top:0px;left:0px;width:100%;height:100%;display:flex;flex-direction:column;justify-content:space-between">
+  <div style="margin-top:60px;padding:0px">
+    <div style="padding:15px;width:100%;background:white;border-radius:0px">
+      <div style="color:#777;font-size:13px;font-weight:500">
+        CUENTA DE USUARIO
+      </div>
+      <hr>
+      <div (click)="balance()" style="display:flex;justify-content:space-between">
+          <div style="font-size:15px;color:#888;font-weight:600">
+            <i class="fas fa-wallet" style="font-size:18px;color:dodgerblue;margin-right:15px"></i>
+            Mi balance
+          </div>
+          <i class="fas fa-check" style="font-size:15px;color:white"></i>
+        </div>
+      <div (click)="recargarCuenta()" style="margin-top:25px;display:flex;justify-content:space-between">
+        <div style="font-size:15px;color:#888;font-weight:600">
+          <i class="fas fa-donate" style="font-size:18px;color:dodgerblue;margin-right:15px"></i>
+          Recargar cuenta
+        </div>
+        <i class="fas fa-check" style="font-size:15px;color:white"></i>
+      </div>
+      <div (click)="signOut()" style="margin-bottom:5px;margin-top:25px;display:flex;justify-content:space-between">
+        <div style="font-size:15px;color:#888;font-weight:600">
+          <i class="fas fa-sign-out-alt" style="font-size:18px;color:dodgerblue;margin-right:15px"></i>
+          Cerrar sesión
+        </div>
+        <i class="fas fa-check" style="font-size:15px;color:white"></i>
+      </div>
+    </div>
+  </div>
+  <div (click)="_control.showUserProfile=false" style="background:rgb(73, 73, 73, 0.5);height:100%;width:100%">
+    </div>
+</div>
 
 
   <div *ngIf="showMenuPartidos"

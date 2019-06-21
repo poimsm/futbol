@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject } from "rxjs";
+import { AuthService as FB } from "angularx-social-login";
+import { FacebookLoginProvider } from "angularx-social-login";
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +10,18 @@ import { BehaviorSubject } from "rxjs";
 export class AuthService {
 
   apiURL = 'http://localhost:3000';
+  // apiURL = 'https://joopiterweb.com';
+
 
   authState = new BehaviorSubject({ isAuth: false, authData: {} });
 
 
 
-  constructor(private http: HttpClient) { this.loadStorage(); }
+  constructor(
+    private http: HttpClient,
+    private authService: FB
+    ) 
+    { this.loadStorage(); }
 
 
   loginIn(email, password) {
@@ -53,6 +61,21 @@ export class AuthService {
         }
       });
     });
+  }
+
+  logout(user) {
+    if (user.method == 'facebook') {
+      this.signOutFacebook();
+      this.removeStorage();
+    } else {
+      this.removeStorage();
+    }
+    const authData = {};
+    this.authState.next({ isAuth: false, authData });
+  }
+
+  removeStorage() {
+    localStorage.removeItem("authData");
   }
 
   saveStorage(token, user) {
@@ -97,6 +120,10 @@ export class AuthService {
   signInWithFacebook(body) {
     const url = `${this.apiURL}/users/facebook`;
     return this.http.post(url, body).toPromise();
+  }
+
+  signOutFacebook(): void {
+    this.authService.signOut();
   }
 
 }

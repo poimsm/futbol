@@ -12,6 +12,7 @@ export class ControlService {
   showBestPlayer = false;
   showRankingGame = false;
   showLogin = false;
+  showUserProfile = false;
 
   swapData: any;
 

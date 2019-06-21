@@ -16,11 +16,12 @@ export class MensajesContenidoComponent implements OnInit {
   partido: any;
   cancha: any;
   organizador: string;
-  userId: string;
+  user: any;
   id: string;
   mensaje: string;
   isLoading: boolean;
-
+  showMatch = false;
+  
   constructor(
     private router: Router,
     private _control: ControlService,
@@ -28,7 +29,7 @@ export class MensajesContenidoComponent implements OnInit {
   ) {
     this.id = this._control.swapData._id;
     this.partido = this._control.swapData.partido;
-    this.userId = this._control.swapData.usuario;
+    this.user = this._control.swapData.usuario;
     this.cancha = this._control.swapData.cancha;
     this.organizador = this._control.swapData.organizador;
   }
@@ -39,9 +40,9 @@ export class MensajesContenidoComponent implements OnInit {
 
   loadMensajes() {
     this.mensajes = [];
-    this._data.getMensajesChat(this.id)
+    this._data.getMensajesChat(this.partido._id)
       .then((data: any) => {
-        this.construirChat(data, this.userId);
+        this.construirChat(data, this.user._id);
       });
   }
 
@@ -82,15 +83,25 @@ export class MensajesContenidoComponent implements OnInit {
       mensaje: this.mensaje,
       mensajeGrupal: this.id,
       partido: this.partido._id,
-      usuario: this.userId
+      usuario: this.user._id
     }
+
+    const body2 = {
+      ids: this.partido.followers,
+      lastMessage: {
+        nombre: this.user.name.split(' ')[0],
+        mensaje: this.mensaje,
+      }  
+    }
+
+    this._data.updateLastMessage(body2);
 
     this._data.createMensaje(body)
       .then(() => {
         this.mensaje = '';
         this.loadMensajes();
         this.isLoading = false;
-      })
+      });
 
   }
 

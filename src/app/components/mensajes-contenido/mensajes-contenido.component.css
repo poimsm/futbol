@@ -2,9 +2,10 @@ input {
     -webkit-appearance: none;
     outline: none;
     box-shadow: none !important;
-    border:1px solid #eee;
+    border:1px solid #ccc;
     border-radius: 10px;
     background: white;
-    padding: 4px;
+    padding: 5px;
+    padding-left:10px;
     width:100%;
 }

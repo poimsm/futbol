@@ -20,6 +20,8 @@ export class HeaderComponent implements OnInit {
   isPartidos = true;
   isMensajes = false;
   showLogin = false;
+  showCity = false;
+  showMenuPartidos = false;
 
 
   user: any;
@@ -49,8 +51,6 @@ export class HeaderComponent implements OnInit {
     
   }
 
-
-
   moveHeader() {
     var prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
@@ -67,19 +67,36 @@ export class HeaderComponent implements OnInit {
   back() {
     this.router.navigateByUrl('/user');
     this._control.isUser = true;
-  }
+  } 
 
- 
-
-  changeView(text) {
-    if (text == 'partidos') {
+  changeView(page) {
+    if (page == 'partidos') {
       this.isPartidos = true;
       this.isMensajes = false;
+      this.router.navigateByUrl(page);
     }
-    if (text == 'mensajes') {
-      this.isPartidos = false;
-      this.isMensajes = true;
+    if (page == 'mensajes') {
+      if (this.isAuth) {
+        this.isPartidos = false;
+        this.isMensajes = true;
+        this.router.navigateByUrl(page);
+      } else {
+        this._control.showLogin = true;
+      }    
     }
+  }
+
+  balance() {
+    this._control.showUserProfile = false;  
+  }
+
+  recargarCuenta() {
+    this._control.showUserProfile = false;  
+  }
+
+  signOut() {
+    this._auth.logout(this.user);
+    this._control.showUserProfile = false;
   }
 
   openHome() {
@@ -87,22 +104,15 @@ export class HeaderComponent implements OnInit {
     this._control.isHome = true;
   }
 
-  togglePlaces(page) {
-    this.router.navigateByUrl(page);
-    this._control.isHome = true;
-  }
-
   openUser() {
     if (this.isAuth) {
-
+      this._control.showUserProfile = true;
     } else {
       this._control.showLogin = true;
     }
   }
 
   ngOnInit() {
-    console.log('url',this.router.url);
-
   }
 
 }

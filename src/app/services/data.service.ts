@@ -9,6 +9,7 @@ import { HttpClient } from "@angular/common/http";
 export class DataService {
 
   apiURL = 'http://localhost:3000';
+  // apiURL = 'https://joopiterweb.com';
 
   constructor(private http: HttpClient) { }
 
@@ -52,8 +53,18 @@ export class DataService {
     return this.http.get(url).toPromise();
   }
 
+  updateLastMessage(body) {
+    const url = `${this.apiURL}/futbol/mensajes-grupales-ultimo-mensaje`;
+    return this.http.put(url, body).toPromise();
+  }
+
   createMensaje(body) {
     const url = `${this.apiURL}/futbol/crear-mensaje`;
+    return this.http.post(url, body).toPromise();
+  }
+
+  createMensajeGrupal(body) {
+    const url = `${this.apiURL}/futbol/crear-mensaje-grupal`;
     return this.http.post(url, body).toPromise();
   }
 

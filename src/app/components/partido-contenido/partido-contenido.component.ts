@@ -90,9 +90,11 @@ export class PartidoContenidoComponent implements OnInit {
     if (this.isBlanco) {
       color = 'blanco'
     }
+
     if (this.isNegro) {
-      color = 'blanco'
+      color = 'negro'
     }
+
     if (color.length == 0) {
       return;
     }
@@ -106,6 +108,15 @@ export class PartidoContenidoComponent implements OnInit {
     .then(() => {
       this.showBuyNow = false;
       this.loadPartido();
+
+      const body = {
+        partido: this.partido._id,
+        cancha: this.partido.cancha._id,
+        usuario: this.user._id,
+        organizador: this.partido.organizador._id
+      }
+
+      this._data.createMensajeGrupal(body);
     });
   }
 

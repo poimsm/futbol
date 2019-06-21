@@ -46,9 +46,7 @@ export class MensajesComponent implements OnInit {
     .then((data: any) => {
       this.mensajes = data;
     });
-  }
-
- 
+  } 
 
   openContent(mensaje) {
     this._control.openPage('mensaje', 'modal');
