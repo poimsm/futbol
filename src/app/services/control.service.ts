@@ -15,6 +15,7 @@ export class ControlService {
   showUserProfile = false;
   showMenuPartidos = false;
   textoMenuPartidos = 'Todo';
+  showHeader: boolean;
 
   swapData: any;
 
@@ -79,6 +80,30 @@ export class ControlService {
       }
     });
     return back;
+  }
+
+  setPageState(page) {
+    if (page == 'appInit') {
+      this.showHeader = true;
+    }
+    if (page == 'partidos') {
+      this.showHeader = true;
+    }
+    if (page == 'mensajes') {
+      this.showHeader = true;
+    }
+    if (page == 'partido') {
+      this.showHeader = false;
+    }
+    if (page == 'mensaje') {
+      this.showHeader = false;
+    }
+    if (page == 'pagar') {
+      this.showHeader = false;
+    }
+    if (page == 'compra-exitosa') {
+      this.showHeader = true;
+    }
   }
 
   openPage(page, type) {

@@ -39,7 +39,8 @@ export class MensajesComponent implements OnInit {
     }
 
   ngOnInit() {
-    this._control.openPage('mensajes', 'page');
+    // this._control.openPage('mensajes', 'page');
+    this._control.setPageState('mensajes');
   }
 
   loadMensajesGrupales() {

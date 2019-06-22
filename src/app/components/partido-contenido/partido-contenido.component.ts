@@ -12,6 +12,10 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class PartidoContenidoComponent implements OnInit {
 
+  title: string = 'My first AGM project';
+  lat: number = 51.678418;
+  lng: number = 7.809007;
+
   partido: any;
   id: string;
   fecha: string;
@@ -52,7 +56,8 @@ export class PartidoContenidoComponent implements OnInit {
 
     this.loadPartido();
 
-    this._control.openPage('partido', 'modal');
+    // this._control.openPage('partido', 'modal');
+    this._control.setPageState('partido');
   }
 
   loadPartido() {
@@ -101,6 +106,10 @@ export class PartidoContenidoComponent implements OnInit {
       return;
     }
 
+    if (this.user.balance <= 2500) {
+      return;
+    }
+    
     let color = '';
 
     if (this.isBlanco) {

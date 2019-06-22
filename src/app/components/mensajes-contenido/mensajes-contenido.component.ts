@@ -48,6 +48,7 @@ export class MensajesContenidoComponent implements OnInit {
   ngOnInit() {
     this.partidoId = this.route.snapshot.paramMap.get("id");
     this.loadMensajes();
+    this._control.setPageState('mensaje');
   }
 
   loadMensajes() {

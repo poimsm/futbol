@@ -93,11 +93,12 @@ export class PartidosComponent implements OnInit {
 
 
   ngOnInit() {
-    this._control.openPage('partidos', 'page');
+    // this._control.openPage('partidos', 'page');
+    this._control.setPageState('partidos');
   }
 
   openPartido(id) {
-    this._control.openPage('partido', 'modal');
+    // this._control.openPage('partido', 'modal');
     this.router.navigateByUrl(`partido/${id}`);
   }
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 
 @Injectable({
@@ -76,5 +76,27 @@ export class DataService {
   rechargeWallet(body) {
     const url = `${this.apiURL}/futbol/comprar-tikect`;
     return this.http.post(url, body).toPromise();
+  }
+
+  createTransaction(body) {
+    const url = `${this.apiURL}/transacciones/crear-transaccion`;
+    return this.http.post(url, body).toPromise();
+  }
+
+  getTransaction(id) {
+    const url = `${this.apiURL}/transacciones/one/${id}`;
+    return this.http.get(url).toPromise();
+  }
+
+  iniciarCompra(token, body) {
+    const url = `${this.apiURL}/transacciones/pago-iniciar`;
+    const headers = new HttpHeaders({
+      Authorization: `JWT ${token}`
+    });
+    return this.http.post(url, body, { headers }).toPromise();
+  }
+
+  recargarCuentaDeUsuario(monto) {
+
   }
 }

@@ -2,12 +2,12 @@
   style="transition: top 0.3s;z-index:100;position:fixed;top:0xp;left:0px;">
 
 
-  <div *ngIf="!_control.isModal" class="row" style="background:white">
+  <div *ngIf="_control.showHeader" class="row" style="background:white">
     <div class="col-12" style="background:orange">
       <div style="height:60px;width:100%;display:flex;align-items:center;justify-content:space-between;padding:15px">
 
         <div style="display:flex;align-items:center">
-          <div style="color:white;font-size:20px;font-weight:700;">
+          <div (click)="openPartidos()" style="color:white;font-size:20px;font-weight:700;">
             Footballon
           </div>
         </div>
@@ -78,35 +78,31 @@
             <div></div>
           </div>
           <div style="margin-top:15px;display:flex;align-items:center">
-            <img src="assets/u02.jpg" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
+            <img [src]="user.img.url" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
             <div style="margin-left:10px;color:#fff;font-size:16px;font-weight:500">
-              <!-- CUENTA DE USUARIO -->
-              Oscar Garcia
-              <div style="font-size:14px;font-weight:400">
-                poimsm@gmail.com
+              {{user.name}}
+              <div *ngIf="user.method == 'facebook'" style="font-size:14px;font-weight:400">
+                {{user.facebook.email}}
+              </div>
+              <div *ngIf="user.method == 'local'" style="font-size:14px;font-weight:400">
+                {{user.local.email}}
               </div>
             </div>
           </div>
-
-          <!-- <hr> -->
-
           <div style="color:#fff;padding:20px;padding-top:30px;padding-bottom:0px;display:flex;justify-content:center">
-            <div style="width:100%;display:flex;justify-content:space-around;font-size:24px;padding:10px;border:1px solid white">
-                Mi saldo
+            <div
+              style="width:100%;display:flex;justify-content:space-around;font-size:24px;padding:10px;border:1px solid white">
+              Mi saldo
               <div style="font-weight:600;font-size:24px">
-                $2.500
+                ${{user.balance}}
               </div>
             </div>
           </div>
         </div>
-
-        <!-- <div style="border-top:1px solid whitesmoke;padding-left:15px;padding-right:15px"></div> -->
-
         <div style="padding:15px;">
-
           <div (click)="recargarCuenta()" style="margin-top:5px;">
             <div style="color:#fff;">
-              Recargar cuenta
+              Agregar dinero a mi cuenta
             </div>
           </div>
           <div (click)="signOut()" style="margin-bottom:5px;margin-top:25px;">
@@ -115,7 +111,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
     <div (click)="_control.showUserProfile=false" style="background:rgb(73, 73, 73, 0.5);height:100%;width:100%">
@@ -123,86 +118,6 @@
   </div>
 
 
-
-
-
-  <div *ngIf="false"
-    style="z-index:999;position:fixed;top:0px;left:0px;width:100%;height:100%;display:flex;flex-direction:column;justify-content:space-between">
-    <div style="margin-top:60px;padding:0px">
-      <div style="width:100%;border-radius:0px;background:white">
-        <div style="padding:15px;background:white;">
-          <div style="display:flex;align-items:center">
-            <img src="assets/u02.jpg" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
-            <div style="margin-left:10px;color:#666;font-size:15px;font-weight:500">
-              <!-- CUENTA DE USUARIO -->
-              Oscar Garcia
-              <div style="font-size:14px;font-weight:400">
-                poimsm@gmail.com
-              </div>
-            </div>
-            <div style="margin-left:20px">
-              Saldo
-              <div style="color:dodgerblue">
-                2500
-              </div>
-            </div>
-          </div>
-
-          <!-- <hr> -->
-
-          <div style="color:#666;padding:20px;display:flex;justify-content:center">
-            <div>
-              Saldo
-              <div style="font-weight:600;font-size:24px">
-                $2.500
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-
-        <!-- <div style="display:flex;justify-content:center">
-        <div>
-            <i class="fas fa-wallet" style="font-size:24px;color:#bbb;margin-right:15px"></i>
-
-            <div style="font-size: 18px;font-weight:300">
-              SALDO: $2500
-            </div>
-        </div>       
-      </div> -->
-
-
-        <!-- <div (click)="balance()" style="display:flex;justify-content:space-between">
-          <div style="font-size:15px;color:#888;font-weight:600">
-            <i class="fas fa-wallet" style="font-size:18px;color:dodgerblue;margin-right:15px"></i>
-            Mi balance
-          </div>
-          <i class="fas fa-check" style="font-size:15px;color:white"></i>
-        </div> -->
-        <div style="padding:15px;background:white">
-
-          <div (click)="recargarCuenta()" style="margin-top:5px;display:flex;justify-content:space-between">
-            <div style="font-size:15px;color:#888;font-weight:600">
-              <i class="fas fa-donate" style="font-size:18px;color:dodgerblue;margin-right:15px"></i>
-              Recargar cuenta
-            </div>
-            <i class="fas fa-check" style="font-size:15px;color:white"></i>
-          </div>
-          <div (click)="signOut()" style="margin-bottom:5px;margin-top:25px;display:flex;justify-content:space-between">
-            <div style="font-size:15px;color:#888;font-weight:600">
-              <i class="fas fa-sign-out-alt" style="font-size:18px;color:dodgerblue;margin-right:15px"></i>
-              Cerrar sesión
-            </div>
-            <i class="fas fa-check" style="font-size:15px;color:white"></i>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <div (click)="_control.showUserProfile=false" style="background:rgb(73, 73, 73, 0.5);height:100%;width:100%">
-    </div>
-  </div>
 
 
 
@@ -226,7 +141,10 @@
 
   </div>
 
+</div>
 
-  <app-evaluar></app-evaluar>
-  <app-login *ngIf="_control.showLogin"></app-login>
-  <app-sidenav *ngIf="_control.showSidenav"></app-sidenav>
+
+
+<app-evaluar></app-evaluar>
+<app-login *ngIf="_control.showLogin"></app-login>
+<app-sidenav *ngIf="_control.showSidenav"></app-sidenav>

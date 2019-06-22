@@ -11,11 +11,16 @@
   <div style="text-align:center;color:darkorange;font-weight:700;width:60px;border-bottom:3px solid darkorange">
     INFO
   </div>
-  <div style="text-align:center;color:darkorange;font-weight:700;width:60px;border-bottom:0px solid darkorange">
+  <!-- <div style="text-align:center;color:darkorange;font-weight:700;width:60px;border-bottom:0px solid darkorange">
     MAPA
-  </div>
+  </div> -->
 
 </div>
+
+
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
 
 
 <div style="padding:15px">

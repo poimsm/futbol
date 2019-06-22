@@ -67,7 +67,11 @@ export class HeaderComponent implements OnInit {
   back() {
     this.router.navigateByUrl('/user');
     this._control.isUser = true;
-  } 
+  }
+
+  openPartidos() {
+    this.router.navigateByUrl('/partidos');
+  }
 
   changeView(page) {
     if (page == 'partidos') {
@@ -91,7 +95,8 @@ export class HeaderComponent implements OnInit {
   }
 
   recargarCuenta() {
-    this._control.showUserProfile = false;  
+    this._control.showUserProfile = false;
+    this.router.navigateByUrl('/pagar');
   }
 
   signOut() {
