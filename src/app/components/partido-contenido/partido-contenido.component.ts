@@ -28,7 +28,7 @@ export class PartidoContenidoComponent implements OnInit {
   isAuth: boolean;
 
   constructor(
-    private _control:ControlService,
+    private _control: ControlService,
     private _data: DataService,
     private route: ActivatedRoute,
     private _auth: AuthService,
@@ -36,7 +36,7 @@ export class PartidoContenidoComponent implements OnInit {
   ) {
     this._auth.authState.subscribe((data: any) => {
 
-      if (data.isAuth) {      
+      if (data.isAuth) {
         this.user = data.authData.user;
         this.token = data.authData.token;
         this.isAuth = true;
@@ -58,14 +58,15 @@ export class PartidoContenidoComponent implements OnInit {
   loadPartido() {
     this._data.getOnePartido(this.id).then((data: any) => {
       this.partido = data;
-      this._data.getJugadores({ids: data.camisetaBlanca})
-      .then((jugadores: any) => {
-        this.camisetaBlanca = jugadores;
-      });
-      this._data.getJugadores({ids: data.camisetaNegra})
-      .then((jugadores: any) => {
-        this.camisetaNegra = jugadores;
-      });
+
+      this._data.getJugadores({ ids: data.camisetaBlanca })
+        .then((jugadores: any) => {
+          this.camisetaBlanca = jugadores;
+        });
+      this._data.getJugadores({ ids: data.camisetaNegra })
+        .then((jugadores: any) => {
+          this.camisetaNegra = jugadores;
+        });
       this._data.getMensajes(data._id).then((mensajes: any) => {
         this.mensajes = mensajes;
       });
@@ -76,6 +77,17 @@ export class PartidoContenidoComponent implements OnInit {
     this.router.navigateByUrl(`partidos`);
   }
 
+  verificarSiExiste() {
+    let existe = false
+    let inscritos = this.partido.camisetaBlanca.concat(this.partido.camisetaNegra)
+    inscritos.forEach(jugador => {
+      if (jugador == this.user._id) {
+        existe = true;
+      }
+    });
+    return existe;
+  }
+
   unirse() {
 
     if (!this.isAuth) {
@@ -84,7 +96,11 @@ export class PartidoContenidoComponent implements OnInit {
       return;
     }
 
-    
+    if (this.verificarSiExiste()) {
+      this.showBuyNow = false;
+      return;
+    }
+
     let color = '';
 
     if (this.isBlanco) {
@@ -99,24 +115,31 @@ export class PartidoContenidoComponent implements OnInit {
       return;
     }
 
-    let body = {
-      color: color,
-      userId: this.user._id
+    const payloadGroupal = {
+      partido: this.partido._id,
+      cancha: this.partido.cancha.nombre,
+      usuario: this.user._id,
+      fecha: this.partido.fechaGrupal,
+      lastMessage: {
+        nombre: '',
+        mensaje: ''
+      },
+      img: this.partido.cancha.img
     }
 
-    this._data.joinPartido(this.partido._id, body)
-    .then(() => {
-      this.showBuyNow = false;
-      this.loadPartido();
+    this._data.createMensajeGrupal(payloadGroupal).then((data: any) => {
 
-      const body = {
-        partido: this.partido._id,
-        cancha: this.partido.cancha._id,
-        usuario: this.user._id,
-        organizador: this.partido.organizador._id
+      const payloadJoin = {
+        color: color,
+        userId: this.user._id,
+        followerId: data._id
       }
 
-      this._data.createMensajeGrupal(body);
+      this._data.joinPartido(this.partido._id, payloadJoin)
+        .then(() => {
+          this.showBuyNow = false;
+          this.loadPartido();
+        });
     });
   }
 

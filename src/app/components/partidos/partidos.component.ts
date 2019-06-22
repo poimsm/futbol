@@ -13,40 +13,67 @@ import { AuthService } from 'src/app/services/auth.service';
 export class PartidosComponent implements OnInit {
 
   partidos = [];
+  isTodo = true;
+
+  isMisPartidos = false;
 
   user: any;
   token: string;
   isAuth: boolean;
 
   constructor(
-    private _control:ControlService,
+    public _control: ControlService,
     private router: Router,
     private _data: DataService,
     private _auth: AuthService
-  ) { 
+  ) {
     this._auth.authState.subscribe((data: any) => {
 
-      if (data.isAuth) {      
+      if (data.isAuth) {
         this.user = data.authData.user;
         this.token = data.authData.token;
         this.isAuth = true;
-        _data.getPartidos().then((partidos: any) => {
-          this.construirPartidos(partidos, this.user._id)    
-        });
       } else {
         this.isAuth = false;
-        _data.getPartidos().then((partidos: any) => {
-          this.construirPartidos(partidos, '')    
-        });
       }
 
+      this.loadPartidos();
     });
-    // _data.getPartidos().then((partidos: any) => {
-    //   this.partidos = partidos;      
-    // });
+  }
+
+  loadPartidos() {
+    if (this.isAuth) {
+      this._data.getPartidos().then((partidos: any) => {
+        this.construirPartidos(partidos, this.user._id)
+      });
+    } else {
+      this._data.getPartidos().then((partidos: any) => {
+        this.construirPartidos(partidos, '')
+      });
+    }
+    this._control.showMenuPartidos = false;
+    this._control.textoMenuPartidos = 'Todo';
+  }
+
+  loadMisPartidos() {
+    if (this.isAuth) {
+      this.loadPartidos();
+      let misPartidos = [];
+      this.partidos.forEach(partido => {
+        if (partido.inscrito) {
+          misPartidos.push(partido);
+        }
+      });
+      this.partidos = misPartidos;
+    } else {
+      this._control.showLogin = true;
+    }
+    this._control.showMenuPartidos = false;
+    this._control.textoMenuPartidos = 'Mis partidos';
   }
 
   construirPartidos(partidos, uid) {
+    this.partidos = [];
     partidos.forEach(partido => {
       let inscrito = false;
       partido.camisetaBlanca.forEach(jugador => {
@@ -60,12 +87,10 @@ export class PartidosComponent implements OnInit {
         }
       });
       this.partidos.push(partido);
-      this.partidos[this.partidos.length - 1].inscrito = inscrito;  
-      console.log('partidos',this.partidos)    
+      this.partidos[this.partidos.length - 1].inscrito = inscrito;
     });
-
-   
   }
+
 
   ngOnInit() {
     this._control.openPage('partidos', 'page');

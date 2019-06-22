@@ -36,6 +36,8 @@ import { PartidosComponent } from './components/partidos/partidos.component';
 import { MensajesComponent } from './components/mensajes/mensajes.component';
 import { MensajesContenidoComponent } from './components/mensajes-contenido/mensajes-contenido.component';
 import { PartidoContenidoComponent } from './components/partido-contenido/partido-contenido.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,8 @@ import { PartidoContenidoComponent } from './components/partido-contenido/partid
     HttpClientModule,
     FormsModule,
     SocialLoginModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     {

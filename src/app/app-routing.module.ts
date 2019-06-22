@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'partidos', component: PartidosComponent },
   { path: 'partido/:id', component: PartidoContenidoComponent },
   { path: 'mensajes', component: MensajesComponent, canActivate: [AuthGuard] },
-  { path: 'mensaje', component: MensajesContenidoComponent, canActivate: [AuthGuard]  },
+  { path: 'mensaje/:id', component: MensajesContenidoComponent, canActivate: [AuthGuard]  },
 
 
   { path: '**', component: PartidosComponent },

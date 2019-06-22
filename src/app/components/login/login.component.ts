@@ -57,6 +57,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.isLoading = true;
     if (this.isSignUp) {
+      console.log('pasooo')
       if (this.name.length > 3 && this.email.length > 4 && this.password.length > 4) {
         this._auth.loginUp(this.name, this.email, this.password)
           .then(() => {

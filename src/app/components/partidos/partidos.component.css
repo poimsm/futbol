@@ -1,0 +1,11 @@
+.selected {
+    font-size:15px;
+    color:#333;
+    font-weight:600;
+}
+
+.not-selected {
+    font-size:15px;
+    color:#888;
+    font-weight:500;
+}

@@ -48,13 +48,8 @@ export class DataService {
     return this.http.get(url).toPromise();
   }
 
-  getMensajesChat(id) {
-    const url = `${this.apiURL}/futbol/mensajes-chat?id=${id}`;
-    return this.http.get(url).toPromise();
-  }
-
-  updateLastMessage(body) {
-    const url = `${this.apiURL}/futbol/mensajes-grupales-ultimo-mensaje`;
+  updateMensajesGrupales(body) {
+    const url = `${this.apiURL}/futbol/actualizar-mensajes-grupales`;
     return this.http.put(url, body).toPromise();
   }
 

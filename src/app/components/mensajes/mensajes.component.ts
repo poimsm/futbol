@@ -18,6 +18,7 @@ export class MensajesComponent implements OnInit {
   isAuth: boolean;
 
   mensajes = [];
+  chats = [];
 
   constructor(
     private router: Router,
@@ -30,7 +31,7 @@ export class MensajesComponent implements OnInit {
           this.user = data.authData.user;
           this.token = data.authData.token;
           this.isAuth = true;          
-          this.loadMensajes();
+          this.loadMensajesGrupales();
         } else {
           this.isAuth = false;
         }  
@@ -41,16 +42,16 @@ export class MensajesComponent implements OnInit {
     this._control.openPage('mensajes', 'page');
   }
 
-  loadMensajes() {
+  loadMensajesGrupales() {
     this._data.getMensajesGrupales(this.user._id)
     .then((data: any) => {
       this.mensajes = data;
     });
-  } 
+  }
 
-  openContent(mensaje) {
+  openContent(mensaje, id) {
     this._control.openPage('mensaje', 'modal');
-    this.router.navigateByUrl('mensaje');
+    this.router.navigateByUrl(`mensaje/${id}`);
     this._control.swapData = mensaje;
   }
 

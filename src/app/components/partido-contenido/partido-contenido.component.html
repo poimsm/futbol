@@ -1,8 +1,8 @@
-<div style="padding:15px;padding-bottom:10px;background:darkorange">
+<div style="padding:15px;padding-bottom:10px;background:orange">
   <div style="display:flex;align-items:center">
     <i (click)="close()" class="fas fa-times" style="font-size:20px;color:white"></i>
-    <div style="margin-left:20px;color:white;font-weight:500">
-      {{partido.cancha.nombre}}
+    <div style="font-size:17px;margin-left:20px;color:white;font-weight:500">
+      {{partido?.cancha.nombre}}
     </div>
   </div>
 </div>
@@ -22,28 +22,28 @@
 
   <div style="display:flex;justify-content:flex-start">
     <i class="far fa-clock" style="margin-top:5px;margin-right:10px;font-size:18px;color:#bbb"></i>
-    <div style="font-size:15px;color:#444">
-      {{partido.fecha2}}
+    <div style="font-size:16px;color:#444">
+      {{partido?.fecha2}}
       <div style="color:#888">
-        {{partido.hora2}}
+        {{partido?.hora2}}
       </div>
     </div>
   </div>
 
   <div style="margin-top:10px;display:flex;justify-content:flex-start">
     <i class="fas fa-map-marker-alt" style="margin-top:5px;margin-right:10px;font-size:18px;color:#bbb"></i>
-    <div style="font-size:15px;color:#444">
-      {{partido.cancha.nombre}}
+    <div style="font-size:16px;color:#444">
+      {{partido?.cancha.nombre}}
       <div style="color:#888">
-        {{partido.cancha.direccion}}
+        {{partido?.cancha.direccion}}
       </div>
     </div>
   </div>
 
   <div style="margin-top:10px;display:flex;justify-content:flex-start">
     <i class="fas fa-user-alt" style="margin-top:5px;margin-right:10px;font-size:15px;color:#bbb"></i>
-    <div style="font-size:15px;color:#444">
-      Organizado por: {{partido.organizador.name}}
+    <div style="font-size:16px;color:#444">
+      Organizado por: {{partido?.organizador.name}}
     </div>
   </div>
 
@@ -54,12 +54,12 @@
 
 <div style="padding:15px">
 
-  <div style="margin-bottom:15px;color:orange;font-size:16px;font-weight:600">
-    Equipos ( 5 vs 5 ) - {{partido.jugadores - partido.cupos}}/{{partido.jugadores}} competidores
+  <div style="margin-bottom:15px;color:orange;font-size:18px;font-weight:600">
+    Equipos ( 5 vs 5 ) - {{partido?.jugadores - partido?.cupos}}/{{partido?.jugadores}} competidores
   </div>
 
   <div
-    style="padding:3px;background:#bbb;width:180px;border-radius:3px;color:white;font-weight:500;font-size:11px;display:flex;justify-content:center;align-items:center">
+    style="padding:3px;background:#999;width:180px;border-radius:3px;color:white;font-weight:500;font-size:12px;display:flex;justify-content:center;align-items:center">
     CAMISETA BLANCA
     <i class="fas fa-tshirt" style="color:white;margin-left:10px"></i>
   </div>
@@ -80,7 +80,7 @@
   <div style="height:20px"></div>
 
   <div
-    style="padding:3px;background:#bbb;width:180px;border-radius:3px;color:white;font-weight:500;font-size:11px;display:flex;justify-content:center;align-items:center">
+    style="padding:3px;background:#999;width:180px;border-radius:3px;color:white;font-weight:500;font-size:12px;display:flex;justify-content:center;align-items:center">
     CAMISETA NEGRA
     <i class="fas fa-tshirt" style="margin-right:5px;margin-left:10px;color:#333;"></i>
   </div>
@@ -101,27 +101,27 @@
 
 
 <div style="padding:15px;padding-top:30px;padding-bottom:30px">
-  <div style="color:orange;font-weight:600;margin-bottom:15px">
-    Comentarios ({{mensajes.length}})
+  <div style="font-size:18px;color:orange;font-weight:600;margin-bottom:15px">
+    Comentarios ({{mensajes?.length}})
   </div>
 
 
-  <div *ngFor="let mensaje of mensajes" style="margin-top:20px;display:flex;align-items:flex-start">
+  <div *ngFor="let mensaje of mensajes" style="width:100%;margin-top:20px;display:flex;align-items:center">
     <div style="margin-top:5px;height:35px;width:35px">
       <img [src]="mensaje.usuario.img.url" style="width:35px;height:35px;border-radius:50%;object-fit:cover">
     </div>
     <div style="margin-left:10px">
       <div>
-        <span style="font-size:15px;font-weight:500">
+        <span style="font-size:16px;font-weight:500">
           {{mensaje.usuario.name}}:
         </span>
-        <span style="font-size:15px;color:#444">
+        <span style="font-size:16px;color:#444">
           {{mensaje.mensaje}}
         </span>
       </div>
-      <div style="text-align:right;color:#999;font-size:13px">
+      <!-- <div style="text-align:right;color:#999;font-size:13px">
         hace 4 horas
-      </div>
+      </div> -->
     </div>
   </div>
 
@@ -134,13 +134,13 @@
 <div
   style="position:fixed;bottom:0px;left:0px;width:100%;background:#fff;border-top:1px solid #eee;display:flex;align-items:center;justify-content:space-between">
   <div>
-    <div style="margin-left:20px;color:orange;font-weight:500;font-size:18px">
-      Valor: ${{partido.cancha.precio}}
+    <div style="margin-left:20px;color:#666;font-weight:500;font-size:18px">
+      Valor: <span style="color:orange">${{partido.cancha.precio}}</span>
     </div>
   </div>
   <div style="display:inline-block">
     <div *ngIf="partido?.cupos != 0" (click)="showBuyNow=true;"
-      style="background:orange;color:white;font-weight:500;padding:10px;padding-left:10px;padding-right:10px;">
+      style="background:#333;color:white;font-weight:500;padding:10px;padding-left:10px;padding-right:10px;">
       Unirse ahora
     </div>
     <div *ngIf="partido?.cupos == 0"
@@ -210,6 +210,9 @@
         style="font-size:15px;padding:10px;border-radius: 5px;width:100%;text-align:center;font-weight:500;color:white;background:orange">
         COMPRAR
       </div>
+
+      <div style="height:10px"></div>
+
 
     </div>
 

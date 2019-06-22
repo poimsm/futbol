@@ -18,8 +18,8 @@
             {{partido.cancha.nombre}}
           </div>
         </div>
-        <div>
-          {{partido.jugadores - partido.cupos}}/{{partido.jugadores}} jugadores
+        <div style="color:#444">
+          {{partido.jugadores - partido.cupos}}/{{partido.jugadores}} competidores
         </div>
       </div>
     </div>
@@ -36,9 +36,9 @@
   <div style="display:flex;margin-top:10px;font-size:15px">
     <div style="margin-left:10px;color:#999">
       <i class="fas fa-share" style="color:#bbb"></i>
-      Compartir
+      Compartir  
     </div>
-    <div style="color:#999;margin-left:50px">
+    <div style="text-size-adjust:none;color:#999;margin-left:50px">
       2.5 km
     </div>
   </div>
@@ -48,4 +48,36 @@
   <h6>Lunes 15 de junio</h6> -->
 
 
+</div>
+
+
+
+
+
+<div *ngIf="_control.showMenuPartidos"
+style="background:rgb(73, 73, 73, 0.5);z-index:999;position:fixed;top:0px;left:0px;width:100%;height:100%;display:flex;flex-direction:column;justify-content:space-between">
+<div (click)="_control.showMenuPartidos=false" style="height:100%;width:100%">
+</div>
+<div style="padding:10px">
+  <div style="padding:15px;width:100%;background:white;border-radius:5px">
+    <div style="color:#777;font-size:13px;font-weight:500">
+      ORDENAR PARTIDOS
+    </div>
+    <hr>
+    <div (click)="loadPartidos();isTodo=true;isMisPartidos=false" style="display:flex;justify-content:space-between">
+      <div [ngClass]="{'selected': isTodo, 'not-selected': !isTodo}">
+        <i class="fas fa-futbol" [ngStyle]="{'color': isTodo ? '#666':'#bbb'}" style="margin-right:15px"></i>
+        Todo
+      </div>
+      <i class="fas fa-check" [ngStyle]="{'color': isTodo ? 'orange':'white'}" style="font-size:15px"></i>
+    </div>
+    <div (click)="loadMisPartidos();isTodo=false;isMisPartidos=true"  style="margin-top:20px;display:flex;justify-content:space-between">
+      <div [ngClass]="{'selected': isMisPartidos,'not-selected': !isMisPartidos}">
+        <i class="fas fa-check-circle"  [ngStyle]="{'color': isMisPartidos ? '#666':'#bbb'}" style="margin-right:15px"></i>
+        Mis Partidos
+      </div>
+      <i class="fas fa-check" [ngStyle]="{'color': isMisPartidos ? 'orange':'white'}" style="font-size:15px"></i>
+    </div>
+  </div>
+</div>
 </div>

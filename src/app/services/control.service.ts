@@ -13,6 +13,8 @@ export class ControlService {
   showRankingGame = false;
   showLogin = false;
   showUserProfile = false;
+  showMenuPartidos = false;
+  textoMenuPartidos = 'Todo';
 
   swapData: any;
 

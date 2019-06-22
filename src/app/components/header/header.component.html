@@ -19,25 +19,23 @@
     </div>
 
     <div style="margin-top:10px;width:100%;display:flex;justify-content:center">
-      <div (click)="changeView('partidos')"
-        [ngClass]="{'active': isPartidos, 'noActive': !isPartidos}"
-        style="font-size:14px;font-weight:450;width:33%;display:inline-block;text-align:center">
+      <div (click)="changeView('partidos')" [ngClass]="{'active': isPartidos, 'noActive': !isPartidos}"
+        style="font-size:14px;font-weight:500;width:33%;display:inline-block;text-align:center">
         PARTIDOS
       </div>
-      <div (click)="changeView('mensajes')"
-        [ngClass]="{'active': isMensajes, 'noActive': !isMensajes}"
-        style="font-size:14px;font-weight:450;width:33%;display:inline-block;text-align:center">
+      <div (click)="changeView('mensajes')" [ngClass]="{'active': isMensajes, 'noActive': !isMensajes}"
+        style="font-size:14px;font-weight:500;width:33%;display:inline-block;text-align:center">
         MENSAJES
       </div>
     </div>
 
     <div style="padding:15px;padding-left:15px;width:100%;display:flex;align-items:center">
-      <div (click)="showMenuPartidos=true" style="font-weight:500;font-size:15px;color:#666">
-        Todo
+      <div (click)="_control.showMenuPartidos=true" style="font-weight:500;font-size:15px;color:#666">
+        {{_control.textoMenuPartidos}}
         <i class="fas fa-caret-down" style="color:#bbb;font-size:16px;margin-left:10px"></i>
       </div>
 
-      <div style="flex-grow:1;text-align:center;color:#666;font-size:15px">
+      <div style="font-weight:500;flex-grow:1;text-align:center;color:#666;font-size:15px">
         <span (click)="showCity=true">
           Valdivia
         </span>
@@ -58,79 +56,153 @@
 
   <div *ngIf="showCity" (click)="showCity=false"
     style="background:rgb(73, 73, 73, 0.5);z-index:999;position:fixed;top:0px;left:0px;width:100%;height:100%;display:flex;justify-content:center;align-items:center">
-    <div style="background:white;border-radius:5px;padding:50px;color:#555">
+    <div style="text-transform:uppercase;background:white;border-radius:5px;padding:50px;color:#555">
       <i class="far fa-dot-circle" style="color:dodgerblue;margin-right:10px;"></i>
       Valdivia
     </div>
   </div>
 
 
+
+
   <div *ngIf="_control.showUserProfile"
-  style="z-index:999;position:fixed;top:0px;left:0px;width:100%;height:100%;display:flex;flex-direction:column;justify-content:space-between">
-  <div style="margin-top:60px;padding:0px">
-    <div style="padding:15px;width:100%;background:white;border-radius:0px">
-      <div style="color:#777;font-size:13px;font-weight:500">
-        CUENTA DE USUARIO
+    style="z-index:999;position:fixed;top:0px;left:0px;width:100%;height:100%;display:flex;flex-direction:column;justify-content:space-between">
+    <div style="margin-top:0px;padding:0px">
+      <div style="width:100%;border-radius:0px;background:orange">
+        <div style="padding:15px;">
+          <div style="display:flex;justify-content:space-between">
+            <i (click)="_control.showUserProfile=false" class="fas fa-times" style="font-size:20px;color:white"></i>
+            <div style="color:white">
+              Footballon
+            </div>
+            <div></div>
+          </div>
+          <div style="margin-top:15px;display:flex;align-items:center">
+            <img src="assets/u02.jpg" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
+            <div style="margin-left:10px;color:#fff;font-size:16px;font-weight:500">
+              <!-- CUENTA DE USUARIO -->
+              Oscar Garcia
+              <div style="font-size:14px;font-weight:400">
+                poimsm@gmail.com
+              </div>
+            </div>
+          </div>
+
+          <!-- <hr> -->
+
+          <div style="color:#fff;padding:20px;padding-top:30px;padding-bottom:0px;display:flex;justify-content:center">
+            <div style="width:100%;display:flex;justify-content:space-around;font-size:24px;padding:10px;border:1px solid white">
+                Mi saldo
+              <div style="font-weight:600;font-size:24px">
+                $2.500
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div style="border-top:1px solid whitesmoke;padding-left:15px;padding-right:15px"></div> -->
+
+        <div style="padding:15px;">
+
+          <div (click)="recargarCuenta()" style="margin-top:5px;">
+            <div style="color:#fff;">
+              Recargar cuenta
+            </div>
+          </div>
+          <div (click)="signOut()" style="margin-bottom:5px;margin-top:25px;">
+            <div style="color:#fff;">
+              Cerrar sesión
+            </div>
+          </div>
+        </div>
+
       </div>
-      <hr>
-      <div (click)="balance()" style="display:flex;justify-content:space-between">
+    </div>
+    <div (click)="_control.showUserProfile=false" style="background:rgb(73, 73, 73, 0.5);height:100%;width:100%">
+    </div>
+  </div>
+
+
+
+
+
+  <div *ngIf="false"
+    style="z-index:999;position:fixed;top:0px;left:0px;width:100%;height:100%;display:flex;flex-direction:column;justify-content:space-between">
+    <div style="margin-top:60px;padding:0px">
+      <div style="width:100%;border-radius:0px;background:white">
+        <div style="padding:15px;background:white;">
+          <div style="display:flex;align-items:center">
+            <img src="assets/u02.jpg" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
+            <div style="margin-left:10px;color:#666;font-size:15px;font-weight:500">
+              <!-- CUENTA DE USUARIO -->
+              Oscar Garcia
+              <div style="font-size:14px;font-weight:400">
+                poimsm@gmail.com
+              </div>
+            </div>
+            <div style="margin-left:20px">
+              Saldo
+              <div style="color:dodgerblue">
+                2500
+              </div>
+            </div>
+          </div>
+
+          <!-- <hr> -->
+
+          <div style="color:#666;padding:20px;display:flex;justify-content:center">
+            <div>
+              Saldo
+              <div style="font-weight:600;font-size:24px">
+                $2.500
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- <div style="display:flex;justify-content:center">
+        <div>
+            <i class="fas fa-wallet" style="font-size:24px;color:#bbb;margin-right:15px"></i>
+
+            <div style="font-size: 18px;font-weight:300">
+              SALDO: $2500
+            </div>
+        </div>       
+      </div> -->
+
+
+        <!-- <div (click)="balance()" style="display:flex;justify-content:space-between">
           <div style="font-size:15px;color:#888;font-weight:600">
             <i class="fas fa-wallet" style="font-size:18px;color:dodgerblue;margin-right:15px"></i>
             Mi balance
           </div>
           <i class="fas fa-check" style="font-size:15px;color:white"></i>
+        </div> -->
+        <div style="padding:15px;background:white">
+
+          <div (click)="recargarCuenta()" style="margin-top:5px;display:flex;justify-content:space-between">
+            <div style="font-size:15px;color:#888;font-weight:600">
+              <i class="fas fa-donate" style="font-size:18px;color:dodgerblue;margin-right:15px"></i>
+              Recargar cuenta
+            </div>
+            <i class="fas fa-check" style="font-size:15px;color:white"></i>
+          </div>
+          <div (click)="signOut()" style="margin-bottom:5px;margin-top:25px;display:flex;justify-content:space-between">
+            <div style="font-size:15px;color:#888;font-weight:600">
+              <i class="fas fa-sign-out-alt" style="font-size:18px;color:dodgerblue;margin-right:15px"></i>
+              Cerrar sesión
+            </div>
+            <i class="fas fa-check" style="font-size:15px;color:white"></i>
+          </div>
         </div>
-      <div (click)="recargarCuenta()" style="margin-top:25px;display:flex;justify-content:space-between">
-        <div style="font-size:15px;color:#888;font-weight:600">
-          <i class="fas fa-donate" style="font-size:18px;color:dodgerblue;margin-right:15px"></i>
-          Recargar cuenta
-        </div>
-        <i class="fas fa-check" style="font-size:15px;color:white"></i>
+
       </div>
-      <div (click)="signOut()" style="margin-bottom:5px;margin-top:25px;display:flex;justify-content:space-between">
-        <div style="font-size:15px;color:#888;font-weight:600">
-          <i class="fas fa-sign-out-alt" style="font-size:18px;color:dodgerblue;margin-right:15px"></i>
-          Cerrar sesión
-        </div>
-        <i class="fas fa-check" style="font-size:15px;color:white"></i>
-      </div>
+    </div>
+    <div (click)="_control.showUserProfile=false" style="background:rgb(73, 73, 73, 0.5);height:100%;width:100%">
     </div>
   </div>
-  <div (click)="_control.showUserProfile=false" style="background:rgb(73, 73, 73, 0.5);height:100%;width:100%">
-    </div>
-</div>
-
-
-  <div *ngIf="showMenuPartidos"
-    style="background:rgb(73, 73, 73, 0.5);z-index:999;position:fixed;top:0px;left:0px;width:100%;height:100%;display:flex;flex-direction:column;justify-content:space-between">
-    <div (click)="showMenuPartidos=false" style="height:100%;width:100%">
-    </div>
-    <div style="padding:10px">
-      <div style="padding:15px;width:100%;background:white;border-radius:5px">
-        <div style="color:#777;font-size:13px;font-weight:500">
-          ORDENAR PARTIDOS
-        </div>
-        <hr>
-        <div style="display:flex;justify-content:space-between">
-          <div style="font-size:15px;color:#333;font-weight:600">
-            <i class="fas fa-futbol" style="color:#666;margin-right:15px"></i>
-            Todo
-          </div>
-          <i class="fas fa-check" style="font-size:15px;color:orange"></i>
-        </div>
-        <div style="margin-top:20px;display:flex;justify-content:space-between">
-          <div style="font-size:15px;color:#888;font-weight:500">
-            <i class="fas fa-check-circle" style="color:#bbb;margin-right:15px"></i>
-            Mis Partidos
-          </div>
-          <i class="fas fa-check" style="font-size:15px;color:white"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
- 
 
 
 

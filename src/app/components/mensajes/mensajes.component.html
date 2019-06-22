@@ -2,9 +2,9 @@
 
 <div *ngFor="let mensaje of mensajes">
 
-  <div (click)="openContent(mensaje)" style="padding:15px;display:flex;align-items:center">
+  <div (click)="openContent(mensaje, mensaje.partido)" style="padding:15px;display:flex;align-items:center">
     <div style="position:relative;margin-right:10px;">
-      <img [src]="mensaje.cancha.img.url" style="width:50px;height:38px;object-fit:cover">
+      <img [src]="mensaje.img.url" style="width:50px;height:38px;object-fit:cover">
       <div
         style="position:absolute;top:-5px;right:-5px;height:15px;width:15px;border:2px solid white;border-radius:50%;background:red">
       </div>
@@ -15,20 +15,20 @@
     <div style="width:100%">
       <div style="font-size:16px;display:flex;justify-content:space-between">
         <div style="font-weight:450;">
-          {{mensaje.cancha.nombre}}
+          {{mensaje.cancha}}
         </div>
         <div style="color:#999;font-size:13px">
           hace 3 horas
         </div>
       </div>
-      <div *ngIf="mensaje.ultimoMensaje" style="font-size:15px;color:#666">
+      <div *ngIf="mensaje.lastMessage" style="font-size:15px;color:#666">
         <span>
-          {{mensaje.ultimoMensaje.nombre}}
+          {{mensaje.lastMessage.nombre}}:
         </span>
-        {{mensaje.ultimoMensaje.mensaje}}
+        {{mensaje.lastMessage.mensaje}}
       </div>
 
-      <div *ngIf="!mensaje.ultimoMensaje" style="font-size:15px;color:#666">
+      <div *ngIf="!mensaje.lastMessage" style="font-size:15px;color:#666">
         <div style="height:10px;width:10px"></div>
       </div>
 
@@ -36,8 +36,7 @@
   </div>
   <div style="margin-bottom:10px;margin-right:10px;display:flex;justify-content:flex-end;align-items:center">
     <div style="margin-right:5px;font-size:14px;color:#999;">
-      {{mensaje.cancha.nombre}} |
-      {{mensaje.partido.fecha3}}
+      {{mensaje.fecha}}
     </div>
     <!-- <div
       style="font-size:14px;color:#999;width:20px;height:20px;border-radius:50%;border:1px solid #bbb;display:flex;align-items:center;justify-content:center">

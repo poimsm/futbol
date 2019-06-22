@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ControlService } from 'src/app/services/control.service';
 import { DataService } from 'src/app/services/data.service';
-import { iif } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-mensajes-contenido',
@@ -16,37 +16,52 @@ export class MensajesContenidoComponent implements OnInit {
   partido: any;
   cancha: any;
   organizador: string;
-  user: any;
   id: string;
   mensaje: string;
   isLoading: boolean;
   showMatch = false;
-  
+  partidoId: string;
+
+  user: any;
+  token: string;
+  isAuth: boolean;
+
   constructor(
     private router: Router,
     private _control: ControlService,
-    private _data: DataService
+    private _data: DataService,
+    private route: ActivatedRoute,
+    private _auth: AuthService
+
   ) {
-    this.id = this._control.swapData._id;
-    this.partido = this._control.swapData.partido;
-    this.user = this._control.swapData.usuario;
-    this.cancha = this._control.swapData.cancha;
-    this.organizador = this._control.swapData.organizador;
+    this._auth.authState.subscribe((data: any) => {
+      if (data.isAuth) {      
+        this.user = data.authData.user;
+        this.token = data.authData.token;
+        this.isAuth = true;        
+      } else {
+        this.isAuth = false;
+      }  
+    });
   }
 
   ngOnInit() {
+    this.partidoId = this.route.snapshot.paramMap.get("id");
     this.loadMensajes();
   }
 
   loadMensajes() {
-    this.mensajes = [];
-    this._data.getMensajesChat(this.partido._id)
-      .then((data: any) => {
-        this.construirChat(data, this.user._id);
-      });
+    this._data.getOnePartido(this.partidoId).then(data => {
+      this.partido = data;
+      this._data.getMensajes(this.partidoId)
+        .then((data: any) => {
+          this.construirChat(data, this.user._id);
+        });
+    });
   }
 
   construirChat(mensajes, uid) {
+    this.mensajes = [];
     mensajes.forEach(mensaje => {
       if (mensaje.usuario._id == uid) {
         this.mensajes.push({
@@ -79,31 +94,29 @@ export class MensajesContenidoComponent implements OnInit {
       return;
     }
 
-    const body = {
+    const payloadMessage = {
       mensaje: this.mensaje,
-      mensajeGrupal: this.id,
       partido: this.partido._id,
       usuario: this.user._id
-    }
+    }    
 
-    const body2 = {
-      ids: this.partido.followers,
-      lastMessage: {
-        nombre: this.user.name.split(' ')[0],
-        mensaje: this.mensaje,
-      }  
-    }
+    this._data.createMensaje(payloadMessage).then(() => {
+      this.mensaje = '';
+      this.loadMensajes();
+      this.isLoading = false;
+    });
 
-    this._data.updateLastMessage(body2);
-
-    this._data.createMensaje(body)
-      .then(() => {
-        this.mensaje = '';
-        this.loadMensajes();
-        this.isLoading = false;
-      });
+    this.partido.followers.forEach(id => {
+      const payloadGroupal = {
+        id: id,
+        lastMessage: {
+          nombre: this.user.name.split(' ')[0],
+          mensaje: this.mensaje,
+        }
+      }
+      this._data.updateMensajesGrupales(payloadGroupal);
+    });
 
   }
-
 
 }

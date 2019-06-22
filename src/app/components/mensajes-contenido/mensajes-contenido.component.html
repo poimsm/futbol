@@ -1,13 +1,13 @@
-<div style="padding:15px;padding-bottom:10px;background:#999">
+<div style="padding:15px;padding-bottom:10px;background:orange">
   <div style="display:flex;align-items:center">
     <i (click)="close()" class="fas fa-times" style="font-size:20px;color:white"></i>
     <div style="margin-left:20px;color:white;font-weight:500">
-      {{cancha.nombre}}
+      {{partido.cancha.nombre}}
     </div>
   </div>
 </div>
 
-<div *ngIf="true" style="padding:15px">
+<div style="padding:15px">
 
   <div style="height:10px"></div>
 
@@ -73,15 +73,15 @@
   style="border-top:1px solid #eee;z-index:900;background:white;position:fixed;bottom:0px;left:0px;width:100%;text-align:center">
 
   <div style="margin-bottom:10px;margin-top:10px;display:flex;align-items:center;justify-content:space-around">
-    <div style="width:80%">
+    <div style="width:75%">
       <input type="text" placeholder="Responder..." [(ngModel)]="mensaje" />
     </div>
     <div *ngIf="!isLoading" (click)="enviar()"
-      style="color:white;padding:4px;font-weight:600;font-size:15px;background:orange;border-radius:5px">
+      style="color:white;padding:8px;font-weight:600;font-size:15px;background:orange;border-radius:5px">
       Enviar
     </div>
     <div *ngIf="isLoading"
-      style="color:white;padding:4px;font-weight:600;font-size:15px;background:rgb(255, 197, 90);border-radius:5px">
+      style="color:white;padding:8px;font-weight:600;font-size:15px;background:rgb(255, 197, 90);border-radius:5px">
       Enviar
     </div>
   </div>
@@ -106,8 +106,10 @@
 
     <div style="display:flex;justify-content:flex-start">
       <i class="far fa-clock" style="margin-top:5px;margin-right:10px;font-size:18px;color:#fff"></i>
-      <div style="font-size:15px;color:#fff">
-        {{partido.fecha2}}
+      <div style="font-size:16px;color:#fff">
+        <div style="font-weight:500;">
+          {{partido.fecha2}}
+        </div>
         <div style="color:#fff">
           {{partido.hora2}}
         </div>
@@ -116,18 +118,20 @@
 
     <div style="margin-top:10px;display:flex;justify-content:flex-start">
       <i class="fas fa-map-marker-alt" style="margin-top:5px;margin-right:10px;font-size:18px;color:#fff"></i>
-      <div style="font-size:15px;color:#fff">
-        {{cancha.nombre}}
+      <div style="font-size:16px;color:#fff">
+        <div style="font-weight:500;">
+          {{partido.cancha.nombre}}
+        </div>
         <div style="color:#fff">
-          {{cancha.direccion}}
+          {{partido.cancha.direccion}}
         </div>
       </div>
     </div>
 
     <div style="margin-top:10px;display:flex;justify-content:flex-start">
       <i class="fas fa-user-alt" style="margin-top:5px;margin-right:10px;font-size:15px;color:#fff"></i>
-      <div style="font-size:15px;color:#fff">
-        Organizado por: {{organizador}}
+      <div style="font-weight:500;font-size:16px;color:#fff">
+        Organizado por: {{partido.organizador.nombre}}
       </div>
     </div>
 
