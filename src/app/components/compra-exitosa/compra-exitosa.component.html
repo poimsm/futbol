@@ -1,11 +1,20 @@
 <div style="height:200px"></div>
 
 
-<div style="padding:20px">
+<div *ngIf="isSuccess" style="padding:20px">
   <div style="font-size:30px;color:orange">
-    Compra exitosa!
+    Pago exitoso!
   </div>
   <div style="margin-top:20px;font-size:16px">
     Haz recargado $2.500 en tu cuenta
   </div>
 </div>
+
+<div *ngIf="!isSuccess" style="padding:20px">
+    <div style="font-size:30px;color:orange">
+      No se logro realizar el pago
+    </div>
+    <div style="margin-top:20px;font-size:16px">
+      Porfavor intente usar Chrome
+    </div>
+  </div>

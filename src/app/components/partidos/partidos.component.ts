@@ -37,42 +37,36 @@ export class PartidosComponent implements OnInit {
         this.isAuth = false;
       }
 
-      this.loadPartidos();
+      this.loadPartidos('todo');
     });
   }
 
-  loadPartidos() {
+  loadPartidos(action) {
     if (this.isAuth) {
       this._data.getPartidos().then((partidos: any) => {
-        this.construirPartidos(partidos, this.user._id)
+        this.construirPartidos(partidos, this.user._id, action)
       });
     } else {
       this._data.getPartidos().then((partidos: any) => {
-        this.construirPartidos(partidos, '')
+        this.construirPartidos(partidos, '', action)
       });
     }
     this._control.showMenuPartidos = false;
     this._control.textoMenuPartidos = 'Todo';
   }
 
+
   loadMisPartidos() {
     if (this.isAuth) {
-      this.loadPartidos();
-      let misPartidos = [];
-      this.partidos.forEach(partido => {
-        if (partido.inscrito) {
-          misPartidos.push(partido);
-        }
-      });
-      this.partidos = misPartidos;
+      this.loadPartidos('mis partidos');
+      this._control.showMenuPartidos = false;
+      this._control.textoMenuPartidos = 'Mis partidos';
     } else {
       this._control.showLogin = true;
     }
-    this._control.showMenuPartidos = false;
-    this._control.textoMenuPartidos = 'Mis partidos';
   }
 
-  construirPartidos(partidos, uid) {
+  construirPartidos(partidos, uid, action) {
     this.partidos = [];
     partidos.forEach(partido => {
       let inscrito = false;
@@ -88,17 +82,25 @@ export class PartidosComponent implements OnInit {
       });
       this.partidos.push(partido);
       this.partidos[this.partidos.length - 1].inscrito = inscrito;
+
+      if (action == 'mis partidos') {
+        let misPartidos = [];
+        this.partidos.forEach(partido => {
+          if (partido.inscrito) {
+            misPartidos.push(partido);
+          }
+        });
+        this.partidos = misPartidos;
+      }    
+
     });
   }
 
-
   ngOnInit() {
-    // this._control.openPage('partidos', 'page');
     this._control.setPageState('partidos');
   }
 
   openPartido(id) {
-    // this._control.openPage('partido', 'modal');
     this.router.navigateByUrl(`partido/${id}`);
   }
 

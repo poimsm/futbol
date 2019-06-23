@@ -13,8 +13,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class PartidoContenidoComponent implements OnInit {
 
   title: string = 'My first AGM project';
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+  lat: number;
+  lng: number;
 
   partido: any;
   id: string;
@@ -26,6 +26,8 @@ export class PartidoContenidoComponent implements OnInit {
   isBlanco: boolean;
   isNegro: boolean;
   showBuyNow: boolean;
+  showAlert: boolean;
+  textAlert: string;
 
   user: any;
   token: string;
@@ -62,7 +64,10 @@ export class PartidoContenidoComponent implements OnInit {
 
   loadPartido() {
     this._data.getOnePartido(this.id).then((data: any) => {
+      
       this.partido = data;
+      this.lat = data.cancha.coors.lat;
+      this.lng = data.cancha.coors.lng;
 
       this._data.getJugadores({ ids: data.camisetaBlanca })
         .then((jugadores: any) => {
@@ -93,6 +98,14 @@ export class PartidoContenidoComponent implements OnInit {
     return existe;
   }
 
+  presentAlert(texto) {
+    this.showAlert = true;
+    this.textAlert = texto;
+    setTimeout(() => {
+      this.showAlert = false;
+    }, 3000);
+  }
+
   unirse() {
 
     if (!this.isAuth) {
@@ -102,14 +115,17 @@ export class PartidoContenidoComponent implements OnInit {
     }
 
     if (this.verificarSiExiste()) {
+      this.presentAlert('Ya se ha unido');
       this.showBuyNow = false;
       return;
     }
 
-    if (this.user.balance <= 2500) {
+    if (this.user.balance < this.partido.precio) {
+      this.presentAlert('Necesita recargar su cuenta');
+      this.showBuyNow = false;
       return;
     }
-    
+
     let color = '';
 
     if (this.isBlanco) {
@@ -146,6 +162,10 @@ export class PartidoContenidoComponent implements OnInit {
 
       this._data.joinPartido(this.partido._id, payloadJoin)
         .then(() => {
+          const payloadUser = {
+            balance: this.user.balance - this.partido.precio
+          }
+          this._auth.updateUser(this.token, payloadUser, this.user._id);
           this.showBuyNow = false;
           this.loadPartido();
         });

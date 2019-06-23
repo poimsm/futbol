@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class CompraExitosaComponent implements OnInit {
 
+  isSuccess: boolean;
+
   user: any;
   token: string;
   isAuth: boolean;
@@ -27,7 +29,9 @@ export class CompraExitosaComponent implements OnInit {
         this.user = data.authData.user;
         this.token = data.authData.token;
         this.isAuth = true;
+        this.verifyTransaction();
       } else {
+        this.isSuccess = false;
         this.isAuth = false;
       }
     });
@@ -35,6 +39,40 @@ export class CompraExitosaComponent implements OnInit {
 
   ngOnInit() {
     this._control.setPageState('compra-exitosa');
+  }
+
+  verifyTransaction() {
+    const order = this._auth.readFlowOrderStorage();
+    if (order) {
+      this._data.getTransaction(order.id).then((data: any) => {
+        if (data.ok) {
+          this.isSuccess = true;
+          const payloadWallet = {
+            id: this.user._id,
+            monto: order.monto
+          }
+          this._data.rechargeWallet(payloadWallet);
+        } else {
+          this.isSuccess = false;
+        }
+      });
+    } else {
+      setTimeout(() => {
+        this._data.getTransaction(order.id).then((data: any) => {
+          if (data.ok) {
+            this.isSuccess = true;
+            const payloadWallet = {
+              id: this.user._id,
+              monto: order.monto
+            }
+            this._data.rechargeWallet(payloadWallet);
+          } else {
+            this.isSuccess = false;
+          }
+        });
+      }, 1000);
+    }
+   
   }
 
 }

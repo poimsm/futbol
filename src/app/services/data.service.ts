@@ -63,19 +63,9 @@ export class DataService {
     return this.http.post(url, body).toPromise();
   }
 
-  buyTicket(body) {
-    const url = `${this.apiURL}/futbol/comprar-tikect`;
-    return this.http.post(url, body).toPromise();
-  }
-
-  cancelTicket(body) {
-    const url = `${this.apiURL}/futbol/comprar-tikect`;
-    return this.http.post(url, body).toPromise();
-  }
-
   rechargeWallet(body) {
-    const url = `${this.apiURL}/futbol/comprar-tikect`;
-    return this.http.post(url, body).toPromise();
+    const url = `${this.apiURL}/futbol/recargar-cuenta`;
+    return this.http.put(url, body).toPromise();
   }
 
   createTransaction(body) {
@@ -94,9 +84,5 @@ export class DataService {
       Authorization: `JWT ${token}`
     });
     return this.http.post(url, body, { headers }).toPromise();
-  }
-
-  recargarCuentaDeUsuario(monto) {
-
   }
 }

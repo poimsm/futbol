@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject } from "rxjs";
 import { AuthService as FB } from "angularx-social-login";
 import { FacebookLoginProvider } from "angularx-social-login";
@@ -20,8 +20,7 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private authService: FB
-    ) 
-    { this.loadStorage(); }
+  ) { this.loadStorage(); }
 
 
   loginIn(email, password) {
@@ -74,6 +73,27 @@ export class AuthService {
     this.authState.next({ isAuth: false, authData });
   }
 
+  updateUser(token, body, id) {
+    return new Promise((resolve, reject) => {
+      const url = `${this.apiURL}/users/actualizar/${id}`;
+      this.http.post(url, body).toPromise()
+        .then(() => {
+          this.updateStorage(token)
+            .then(() => resolve());
+        });
+    });
+  }
+
+  saveFlowOrderStorage(order) {
+    localStorage.setItem("order", JSON.stringify(order));
+  }
+
+  readFlowOrderStorage() {
+    const res = localStorage.getItem('order');
+    const order = JSON.parse(res).order;
+    return order
+  }
+
   removeStorage() {
     localStorage.removeItem("authData");
   }
@@ -82,6 +102,16 @@ export class AuthService {
     const authData = { user, token };
     localStorage.setItem("authData", JSON.stringify(authData));
     this.authState.next({ isAuth: true, authData });
+  }
+
+  updateStorage(token) {
+    return new Promise((resolve, reject) => {
+      this.getUser(token)
+        .then((resUser: any) => {
+          this.saveStorage(token, resUser.user);
+          resolve();
+        });
+    });
   }
 
   loadStorage() {
@@ -115,6 +145,14 @@ export class AuthService {
       }
     };
     return this.http.post(url, body).toPromise();
+  }
+
+  getUser(token) {
+    const url = `${this.apiURL}/users/me`;
+    const headers = new HttpHeaders({
+      Authorization: `JWT ${token}`
+    });
+    return this.http.get(url, { headers }).toPromise();
   }
 
   signInWithFacebook(body) {

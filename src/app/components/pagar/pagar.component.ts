@@ -78,6 +78,13 @@ export class PagarComponent implements OnInit {
         let transactionId = res._id;
         let monto = res.monto;
 
+        const payloadOrder = {
+          id: transactionId,
+          monto: monto
+        }
+
+        this._auth.saveFlowOrderStorage(payloadOrder);
+
         // const flowPayload = {
         //   email: '',
         //   monto: res.monto

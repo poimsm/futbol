@@ -7,7 +7,7 @@
 
 
   <div *ngFor="let partido of partidos" (click)="openPartido(partido._id)"
-    style="color:#222;display:flex;justify-content:space-between">
+    style="margin-bottom:15px;color:#222;display:flex;justify-content:space-between">
     <div style="display:flex;align-items:center">
       <img [src]="partido.organizador.img.url"
         style="border:0px solid #fff;margin-right:10px;width:35px;height:35px;border-radius:50%;object-fit:cover">
@@ -33,7 +33,7 @@
       </div>
     </div>
   </div>
-  <div style="display:flex;margin-top:10px;font-size:15px">
+  <!-- <div style="display:flex;margin-top:10px;font-size:15px">
     <div style="margin-left:10px;color:#999">
       <i class="fas fa-share" style="color:#bbb"></i>
       Compartir  
@@ -41,7 +41,7 @@
     <div style="text-size-adjust:none;color:#999;margin-left:50px">
       2.5 km
     </div>
-  </div>
+  </div> -->
 
   <!-- <hr>
   <div style="height:15px"></div>
