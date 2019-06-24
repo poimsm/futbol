@@ -32,6 +32,7 @@ export class MensajesComponent implements OnInit {
           this.token = data.authData.token;
           this.isAuth = true;          
           this.loadMensajesGrupales();
+          this._auth.readFlowOrderStorage(this.token);
         } else {
           this.isAuth = false;
         }  

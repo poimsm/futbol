@@ -15,10 +15,12 @@ export class PagarComponent implements OnInit {
   token: string;
   isAuth: boolean;
 
-  is2500 = true;
-  is5000 = false;
-  is7500 = false;
+  isA = false;
+  isB = true;
+  isC = false;
+  monto = 2500;
 
+  isLoading = false;
 
   constructor(
     private _data: DataService,
@@ -32,6 +34,7 @@ export class PagarComponent implements OnInit {
         this.user = data.authData.user;
         this.token = data.authData.token;
         this.isAuth = true;
+        this._auth.readFlowOrderStorage(this.token);
       } else {
         this.isAuth = false;
       }
@@ -43,20 +46,21 @@ export class PagarComponent implements OnInit {
   }
 
   toggle(num) {
+    this.monto = num;
+    if (num == 1500) {
+      this.isA = true;
+      this.isB = false;
+      this.isC = false;
+    }
     if (num == 2500) {
-      this.is2500 = true;
-      this.is5000 = false;
-      this.is7500 = false;
+      this.isA = false;
+      this.isB = true;
+      this.isC = false;
     }
     if (num == 5000) {
-      this.is2500 = false;
-      this.is5000 = true;
-      this.is7500 = false;
-    }
-    if (num == 7500) {
-      this.is2500 = false;
-      this.is5000 = false;
-      this.is7500 = true;
+      this.isA = false;
+      this.isB = false;
+      this.isC = true;
     }
   }
 
@@ -66,41 +70,34 @@ export class PagarComponent implements OnInit {
 
   pagarConFlow() {
 
+    this.isLoading = true;
+
     const transactionPayload: any = {
       ok: false,
       usuario: this.user._id,
-      monto: 300
+      monto: this.monto
     }
 
     this._data.createTransaction(transactionPayload)
       .then((res: any) => {
 
-        let transactionId = res._id;
-        let monto = res.monto;
-
         const payloadOrder = {
-          id: transactionId,
-          monto: monto
+          id: res._id
         }
 
         this._auth.saveFlowOrderStorage(payloadOrder);
 
-        // const flowPayload = {
-        //   email: '',
-        //   monto: res.monto
-        // }
-
-        // if (res.usuario.method == 'facebook') {
-        //   flowPayload.email = res.usuario.facebook.email;
-        // } else {
-        //   flowPayload.email = res.usuario.local.email;
-        // }
-
-         const flowPayload = {
-          email: 'poimsm@gmail.com',
-          monto: 350
+        const flowPayload = {
+          transaccionId: res._id,
+          email: '',
+          monto: res.monto
         }
 
+        if (this.user.method == 'facebook') {
+          flowPayload.email = this.user.facebook.email;
+        } else {
+          flowPayload.email = this.user.local.email;
+        }
 
         this._data.iniciarCompra(this.token, flowPayload).then((data) => {
           let respuesta = JSON.parse(JSON.stringify(data));
@@ -110,18 +107,12 @@ export class PagarComponent implements OnInit {
             // subTitle: 'Imposible conectar con el sistema de pagos.'
           } else {
 
-            console.log('res', respuesta)
+            this.isLoading = false;
 
             let token = respuesta.token;
             let url = respuesta.url;
 
             window.open(url + '?token=' + token, "_blank");
-
-            // this._data.getTransaction(transactionId).then((result: any) => {
-            //   if (result.ok) {
-            //     this._data.recargarCuentaDeUsuario(monto);
-            //   }
-            // });
           }
 
         });

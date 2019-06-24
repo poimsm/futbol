@@ -13,24 +13,28 @@
     Seleccione el monto que desea cargar:
   </div>
 
+  <div (click)="toggle(1500)" style="margin-top:20px;color:#444;font-size:18px;font-weight:500">
+    <i *ngIf="isA" class="far fa-dot-circle" style="color:dodgerblue;margin-right:10px"></i>
+    <i *ngIf="!isA" class="far fa-circle" style="color:#bbb;margin-right:10px"></i>
+    $1.500
+  </div>
   <div (click)="toggle(2500)" style="margin-top:20px;color:#444;font-size:18px;font-weight:500">
-    <i *ngIf="is2500" class="far fa-dot-circle" style="color:dodgerblue;margin-right:10px"></i>
-    <i *ngIf="!is2500" class="far fa-circle" style="color:#bbb;margin-right:10px"></i>
-    $2.500 
+    <i *ngIf="!isB" class="far fa-circle" style="color:#bbb;margin-right:10px"></i>
+    <i *ngIf="isB" class="far fa-dot-circle" style="color:dodgerblue;margin-right:10px"></i>
+    $2.500
   </div>
   <div (click)="toggle(5000)" style="margin-top:20px;color:#444;font-size:18px;font-weight:500">
-    <i *ngIf="!is5000" class="far fa-circle" style="color:#bbb;margin-right:10px"></i>
-    <i *ngIf="is5000" class="far fa-dot-circle" style="color:dodgerblue;margin-right:10px"></i>
-    $5.000
-  </div>
-  <div (click)="toggle(7500)" style="margin-top:20px;color:#444;font-size:18px;font-weight:500">
-    <i *ngIf="!is7500" class="far fa-circle" style="color:#bbb;margin-right:10px"></i>
-    <i *ngIf="is7500" class="far fa-dot-circle" style="color:dodgerblue;margin-right:10px"></i>
-    $7.500
+    <i *ngIf="!isC" class="far fa-circle" style="color:#bbb;margin-right:10px"></i>
+    <i *ngIf="isC" class="far fa-dot-circle" style="color:dodgerblue;margin-right:10px"></i>
+    $5000
   </div>
 
   <div style="margin-top:20px;width:100%;text-align:center">
-    <div (click)="pagarConFlow()"
+    <div *ngIf="!isLoading" (click)="pagarConFlow()"
+      style="display:inline-block;background:orange;padding:4px;border-radius:5px;color:white;font-weight:500;font-size:18px">
+      Iniciar pago
+    </div>
+    <div *ngIf="isLoading"
       style="display:inline-block;background:orange;padding:4px;border-radius:5px;color:white;font-weight:500;font-size:18px">
       Iniciar pago
     </div>

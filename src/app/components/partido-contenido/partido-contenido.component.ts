@@ -46,6 +46,7 @@ export class PartidoContenidoComponent implements OnInit {
         this.user = data.authData.user;
         this.token = data.authData.token;
         this.isAuth = true;
+        this._auth.readFlowOrderStorage(this.token);
       } else {
         this.isAuth = false;
       }

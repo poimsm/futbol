@@ -9,8 +9,8 @@ import { FacebookLoginProvider } from "angularx-social-login";
 })
 export class AuthService {
 
-  apiURL = 'http://localhost:3000';
-  // apiURL = 'https://joopiterweb.com';
+  // apiURL = 'http://localhost:3000';
+  apiURL = 'https://joopiterweb.com';
 
 
   authState = new BehaviorSubject({ isAuth: false, authData: {} });
@@ -88,10 +88,18 @@ export class AuthService {
     localStorage.setItem("order", JSON.stringify(order));
   }
 
-  readFlowOrderStorage() {
+  readFlowOrderStorage(token) {
     const res = localStorage.getItem('order');
-    const order = JSON.parse(res).order;
-    return order
+    const order = JSON.parse(res);
+    if (order) {
+      this.getUser(token)
+      .then((resUser: any) => {
+        const authData = { user: resUser.user, token };
+        localStorage.setItem("authData", JSON.stringify(authData));
+        localStorage.removeItem("order");
+        this.authState.next({ isAuth: true, authData });
+      });
+    }    
   }
 
   removeStorage() {
@@ -146,7 +154,7 @@ export class AuthService {
     };
     return this.http.post(url, body).toPromise();
   }
-
+  
   getUser(token) {
     const url = `${this.apiURL}/users/me`;
     const headers = new HttpHeaders({

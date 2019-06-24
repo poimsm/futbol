@@ -46,7 +46,8 @@ export class ControlService {
     }
   ];
 
-  constructor() { }
+  constructor() {
+  }
 
   setPage() {
 
@@ -82,7 +83,9 @@ export class ControlService {
     return back;
   }
 
+
   setPageState(page) {
+    
     if (page == 'appInit') {
       this.showHeader = true;
     }

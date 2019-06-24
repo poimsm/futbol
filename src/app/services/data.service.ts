@@ -8,8 +8,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 })
 export class DataService {
 
-  apiURL = 'http://localhost:3000';
-  // apiURL = 'https://joopiterweb.com';
+  // apiURL = 'http://localhost:3000';
+  apiURL = 'https://joopiterweb.com';
 
   constructor(private http: HttpClient) { }
 
@@ -76,6 +76,11 @@ export class DataService {
   getTransaction(id) {
     const url = `${this.apiURL}/transacciones/one/${id}`;
     return this.http.get(url).toPromise();
+  }
+
+  updateTransaction(id) {
+    const url = `${this.apiURL}/transacciones/actualizar-como-utilizada?id=${id}`;
+    return this.http.put(url, {}).toPromise();
   }
 
   iniciarCompra(token, body) {
