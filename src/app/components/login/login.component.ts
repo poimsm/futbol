@@ -24,6 +24,9 @@ export class LoginComponent implements OnInit {
 
   isLoading = false;
 
+  passwordType: string = 'password';
+  showPass = false;
+
 
   constructor(
     public _control: ControlService,
@@ -80,6 +83,11 @@ export class LoginComponent implements OnInit {
           }          
         });
     }
+  }
+
+  showHide() {
+    this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
+    this.showPass = !this.showPass;
   }
 
   ngOnInit() {

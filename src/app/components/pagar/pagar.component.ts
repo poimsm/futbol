@@ -112,7 +112,7 @@ export class PagarComponent implements OnInit {
             let token = respuesta.token;
             let url = respuesta.url;
 
-            window.open(url + '?token=' + token, "_blank");
+            window.open(url + '?token=' + token, "_self");
           }
 
         });

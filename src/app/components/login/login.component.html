@@ -41,7 +41,16 @@
 
         <input style="margin-top:20px" type="text" placeholder="Nombre" [(ngModel)]="name" />
         <input style="margin-top:20px" type="email" placeholder="Email" [(ngModel)]="email" />
-        <input style="margin-top:20px" type="password" placeholder="Contraseña" [(ngModel)]="password" />
+        <input style="margin-top:20px" [type]="passwordType" placeholder="Contraseña" [(ngModel)]="password" />
+
+        <div *ngIf="!showPass" (click)="showHide()"
+          style="width:100%;text-align:right;margin-top:10px;margin-bottom:10px;color:#666;font-weight:500;font-size:16px">
+          Mostrar contraseña
+        </div>
+        <div *ngIf="showPass" (click)="showHide()"
+          style="width:100%;text-align:right;margin-top:10px;margin-bottom:15px;color:#666;font-weight:500;font-size:16px">
+          Ocultar
+        </div>
 
         <div *ngIf="!isLoading" (click)="login()"
           style="margin-top:20px;color:white;background:#ff3c3c;padding:5px;border-radius:5px;text-align:center">
@@ -60,7 +69,15 @@
     <div *ngIf="isSignIn" style="padding:0px">
 
       <input style="margin-top:20px" type="email" placeholder="Email" [(ngModel)]="email" />
-      <input style="margin-top:20px" type="password" placeholder="Contraseña" [(ngModel)]="password" />
+      <input style="margin-top:20px" [type]="passwordType" placeholder="Contraseña" [(ngModel)]="password" />
+      <div *ngIf="!showPass" (click)="showHide()"
+        style="width:100%;text-align:right;margin-top:10px;margin-bottom:10px;color:#666;font-weight:500;font-size:16px">
+        Mostrar contraseña
+      </div>
+      <div *ngIf="showPass" (click)="showHide()"
+        style="width:100%;text-align:right;margin-top:10px;margin-bottom:15px;color:#666;font-weight:500;font-size:16px">
+        Ocultar
+      </div>
 
       <div *ngIf="isIncorrectPassOrEmail" style="color:red">
         Correo o contraseña incorrecto
